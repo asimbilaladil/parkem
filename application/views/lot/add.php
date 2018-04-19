@@ -62,7 +62,7 @@
                                         <label class=" form-control-label col-md-12">Pin</label>
                                         <div class="input-group col-md-8">
                                             <div class="input-group-addon"><i class="fa fa-pin"></i></div>
-                                            <input id="pin" required name="pin" class="form-control" type="number">
+                                            <input id="pin"  name="pin" class="form-control" type="number">
                                         </div>
                                         
                                     </div>
