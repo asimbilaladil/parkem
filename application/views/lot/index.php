@@ -6,7 +6,7 @@
                     <div class="card">
                       <div class="card-header">
                             <div class="col-md-2">
-                                <strong class="card-title ">Admin</strong>
+                                <strong class="card-title ">Lot</strong>
                             </div>    
                             <div class="col-md-10">
                                 <a href="<?php echo site_url('Lot/Add') ?>"><button type="button" class="btn btn-outline-success pull-right"><i class="fa fa-plus"></i>&nbsp; Add</button></a>
