@@ -21,7 +21,7 @@ class Login extends CI_Controller {
     public function adminLogin(){
            
         if($this->input->post()) {
-             echo "here";  
+    //         echo "here";  
             $loginData = array (
                 'email' => $this->input->post('email', true),
                 'password' => md5($this->input->post('password', true) )
@@ -31,13 +31,15 @@ class Login extends CI_Controller {
 
              //if query found any result i.e userfound
                     if( count($result) != 0 ) {
-                        $data  = $result[0];
+      
+                  $data  = $result[0];
                         $_SESSION['id'] = $result[0]->id;
+
                         //$this->session->set_userdata($data);
                         $redirect = 'Admin/';          
 
                     }
-                    redirect($redirect);
+                   redirect($redirect);
               
         }
     }

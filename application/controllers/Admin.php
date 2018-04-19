@@ -10,7 +10,7 @@ class Admin extends CI_Controller {
         $this->load->library('session');
         
         if ( empty($_SESSION['id']) ) {
-            redirect('Login/');
+//            redirect('Login/');
         }
         
       
