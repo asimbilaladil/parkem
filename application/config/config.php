@@ -398,10 +398,10 @@ $config['sess_regenerate_destroy'] = FALSE;
 |
 | Note: These settings (with the exception of 'cookie_prefix' and
 |       'cookie_httponly') will also affect sessions.
-|
+
 */
 $config['cookie_prefix']	= '';
-$config['cookie_domain']	= 'localhost';
+$config['cookie_domain']	= '34.205.32.200';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;

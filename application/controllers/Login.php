@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -35,11 +36,12 @@ class Login extends CI_Controller {
                   $data  = $result[0];
                         $_SESSION['id'] = $result[0]->id;
 
-                        //$this->session->set_userdata($data);
+                    //    $this->session->set_userdata($data);
                         $redirect = 'Admin/';          
 
                     }
-                   redirect($redirect);
+
+                redirect($redirect);
               
         }
     }
