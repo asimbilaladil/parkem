@@ -35,5 +35,15 @@ class AdminModel extends CI_Model {
         $quary_result=$this->db->get();
         $result = $quary_result->result();
         return $result;  
-    }       
+    }   
+    public function operator_login_check_info( $data ){
+        $this->db->select('*');
+        $this->db->from( 'operator' );
+        $this->db->where( 'username', $data['username'] );
+        $this->db->where( 'password', $data['password'] );
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;  
+    }
+
 }
