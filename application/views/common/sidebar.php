@@ -27,6 +27,10 @@
                         <a href="<?php echo site_url('Operator') ?>"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Operator</a>
                         
                     </li>
+                    <li >
+                        <a href="<?php echo site_url('Lot') ?>"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Lot</a>
+                        
+                    </li>                    
                    
                    
 
