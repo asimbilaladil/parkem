@@ -10,9 +10,12 @@ class Api extends REST_Controller  {
         $this->load->model('AdminModel');
 
     }	
-	public function index(){
-      
-    }
+
+   function user_post()
+    {
+        $data = array('returned: '. $this->post('id'));
+        $this->response($data);
+    } 
     // public function operatorLogin(){
     //     if($this->input->post()){
     //         var_dump($);
