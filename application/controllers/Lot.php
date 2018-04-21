@@ -33,9 +33,8 @@ class Lot extends CI_Controller {
             $hour = $this->input->post('hour');
             $day = $this->input->post('day');
             $contact = $this->input->post('contact');
-            $unit = $this->input->post('unit');
-            $pin = $this->input->post('pin');
-            $contact = $this->input->post('contact');
+            $address = $this->input->post('address');
+
             $lat = $this->input->post('lat');
             $lng = $this->input->post('lng');
             $admin_id = $this->session->userdata('id');
@@ -44,9 +43,7 @@ class Lot extends CI_Controller {
                'hour' =>  $hour, 
                'day' => $day, 
                'contact' => $contact,
-               'unit' => $unit,
-               'pin' => $pin, 
-               'contact' =>  $contact, 
+               'address' => $address,
                'lat' => $lat, 
                'lng' => $lng,
                'admin_id' => $admin_id               
