@@ -26,7 +26,7 @@
                                         <div class="input-group col-md-8">
                                             <div class="input-group-addon"><i class="fa fa-pin"></i></div>
                                             
-                                            <input id="pac-input" class="form-control" type="text" placeholder="Search Box">
+                                            <input name="address" id="pac-input" class="form-control" type="text" placeholder="Search Box">
                                         </div>
                                         
                                     </div>                                    
