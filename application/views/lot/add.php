@@ -21,14 +21,16 @@
                                         </div>
                                        
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label class=" form-control-label col-md-12">Contact</label>
+                                    <div class="form-group col-md-6" >
+                                        <label class=" form-control-label col-md-12">Address</label>
                                         <div class="input-group col-md-8">
                                             <div class="input-group-addon"><i class="fa fa-pin"></i></div>
-                                            <input  required name="contact" class="form-control" type="text">
+                                            
+                                            <input id="pac-input" class="form-control" type="text" placeholder="Search Box">
                                         </div>
                                         
                                     </div>                                    
+                                                                  
                                     <div class="form-group col-md-6">
                                         <label class=" form-control-label col-md-12">Hour</label>
                                         <div class="input-group col-md-8">
@@ -45,40 +47,18 @@
                                         </div>
                                        
                                     </div>
-                                   
+                                 
                                     <div class="form-group col-md-6">
-                                        <label class=" form-control-label col-md-12">Unit</label>
+                                        <label class=" form-control-label col-md-12">Contact</label>
                                         <div class="input-group col-md-8">
                                             <div class="input-group-addon"><i class="fa fa-pin"></i></div>
-                                            <select onchange="showHide();" name="unit" id="unit" class="form-control">
-                                                <option value="no">No</option>
-                                                <option value="yes">Yes</option>
-
-                                            </select>
+                                            <input  required name="contact" class="form-control" type="text">
                                         </div>
                                         
-                                    </div>
-                                    <div class="form-group col-md-6" id="pinBox" style="display: none;">
-                                        <label class=" form-control-label col-md-12">Pin</label>
-                                        <div class="input-group col-md-8">
-                                            <div class="input-group-addon"><i class="fa fa-pin"></i></div>
-                                            <input id="pin"  name="pin" class="form-control" type="number">
-                                        </div>
-                                        
-                                    </div>
+                                    </div>                                         
                                      <input id="lng"  name="lng" class="form-control" type="hidden">
                                       <input id="lat"  name="lat" class="form-control" type="hidden">
-                                    <div class="col-lg-10">
-                            <div class="card" style=" margin-left: 15px; ">
-                                <div class="card-header">
-                                    <h4>Lot Map</h4>
-                                </div>
-                                <div style="height: 250px" id="map" class="gmap_unix card-body">
-                                   
-                                </div>
-                            </div>
-                            <!-- /# card -->
-                        </div>                                                                                         
+                                                                                                            
                                     
                       
                                    <div class="form-group col-md-10">
@@ -99,55 +79,52 @@
 
             </div><!-- .animated -->
         </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-            <script>
- var showHide = function showHide(){
-    var unit = $('#unit').val();
-    if(unit == 'yes'){
-        $('#pinBox').show();
-    } else {
-        $('#pinBox').hide();
-        $('#pin').val('');
+<script>
 
+
+ 
+    function initAutocomplete() {
+
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+
+
+
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) {
+            return;
+          } else {
+            var lat = places[0].geometry.location.lat();
+            // get lng
+            var lng = places[0].geometry.location.lng();
+
+            $('#lat').val(lat)
+            $('#lng').val(lng)   
+
+
+          }
+
+
+
+
+
+
+        });
     }
- }
-      // The following example creates a marker in Stockholm, Sweden using a DROP
-      // animation. Clicking on the marker will toggle the animation between a BOUNCE
-      // animation and no animation.
+</script>      
 
-      var marker;
-
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: 59.325, lng: 18.070}
-        });
-
-        marker = new google.maps.Marker({
-          map: map,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-          position: {lat: 59.327, lng: 18.067}
-        });
-        marker.addListener('click', toggleBounce);
-        google.maps.event.addListener(marker, 'dragend', function(event) {
-                $('#lat').val(event.latLng.lat())
-                $('#lng').val(event.latLng.lng())
-                
-        });  
-      }
-
-      function toggleBounce() {
-        if (marker.getAnimation() !== null) {
-          marker.setAnimation(null);
-        } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-      }
-
-    </script>
 
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCux8E5j2vMYKpkJ33BAWTVIuRuLvFCEKU&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCux8E5j2vMYKpkJ33BAWTVIuRuLvFCEKU&libraries=places&callback=initAutocomplete">
     </script>
