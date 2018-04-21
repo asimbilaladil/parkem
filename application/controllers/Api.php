@@ -11,33 +11,37 @@ class Api extends REST_Controller  {
 
     }	
 
-   function user_post()
-    {
-        $data = array('returned: '. $this->post('id'));
+   function operatorLogin_post(){
+
+        if($this->post()){
+
+            $username = $this->post('username');
+            $password = $this->post('password');
+            if(!empty($username) && !empty($password)){
+
+                $loginData = array (
+                    'username' => $username,
+                    'password' => md5($password)
+                );
+                $result = $this->AdminModel->operator_login_check_info($loginData);
+                if(count($result) != 0){
+                    $data['data'] = $result[0];
+                    $data['status'] = "success"; 
+                    $data['message']  = "Login Successfully";
+                } else{
+                    $data['status'] = "fail"; 
+                    $data['message']  = "Wrong username or password";
+
+                }
+            } else {
+                $data['status'] = "fail";  
+                $data['message']  ="one field username or password missing";
+            }
+        }          
+
         $this->response($data);
     } 
-    // public function operatorLogin(){
-    //     if($this->input->post()){
-    //         var_dump($);
-    //         $username = $this->input->post('username');
-    //         $password = $this->input->post('password');
-    //         if(!empty($username) && !empty($password)){
-    //             echo "HERE";
-    //             $loginData = array (
-    //                 'username' => $username,
-    //                 'password' => md5($password)
-    //             );
-    //             $result = $this->AdminModel->operator_login_check_info($loginData);
-    //             if(count($result) != 0){
-    //                 return $result[0];
-    //             } else{
-    //                 echo "Wrong username or password";
-    //             }
-    //         } else {
-    //              echo "one field username or password missing";
-    //         }
-    //     }  
-    // }
+ 
 
    
 }
