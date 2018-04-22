@@ -11,7 +11,7 @@ class Api extends REST_Controller  {
 
     }	
 
-   function operatorLogin_post(){
+    function operatorLogin_post(){
 
         if($this->post()){
 
@@ -29,11 +29,13 @@ class Api extends REST_Controller  {
                     $data['status'] = "success"; 
                     $data['message']  = "Login Successfully";
                 } else{
+                    $data['data'] = [];
                     $data['status'] = "fail"; 
                     $data['message']  = "Wrong username or password";
 
                 }
             } else {
+                $data['data'] = [];
                 $data['status'] = "fail";  
                 $data['message']  ="one field username or password missing";
             }
@@ -41,7 +43,22 @@ class Api extends REST_Controller  {
 
         $this->response($data);
     } 
- 
+    function getAllLots_get(){
+
+        $result = $this->AdminModel->getLotNames();
+        if(count($result) != 0){
+            $data['data'] = $result;
+            $data['status'] = "success"; 
+            $data['message']  = "Data available";
+        } else{
+            $data['data'] = [];
+            $data['status'] = "fail"; 
+            $data['message']  = "No data available";
+
+        }
+
+        $this->response($data);
+    } 
 
    
 }

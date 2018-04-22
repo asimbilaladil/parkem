@@ -45,5 +45,14 @@ class AdminModel extends CI_Model {
         $result = $quary_result->result();
         return $result;  
     }
+    public function getLotNames() {
+        $this->db->select('name');
+        $this->db->select('id');
+        $this->db->from( 'lot' );
+        $this->db->where( 'is_delete', 0 );
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;        
+    }    
 
 }
