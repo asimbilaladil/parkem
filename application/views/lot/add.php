@@ -60,23 +60,7 @@
                                       <input id="lat"  name="lat" class="form-control" type="hidden">
                                                                                                             
                                     <div class="unitDiv form-group col-md-12">
-                                        <div class="form-group col-md-5">
-                                            <label class=" form-control-label col-md-12">Unit #</label>
-                                            <div class="input-group col-md-8">
-                                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                                <input  name="unit[]" class="form-control" type="text">
-                                            </div>
-                                           
-                                        </div>
-                                      
-                                        <div class="form-group col-md-5">
-                                            <label class=" form-control-label col-md-12">Pin</label>
-                                            <div class="input-group col-md-8">
-                                                <div class="input-group-addon"><i class="fa fa-usd"></i></div>
-                                                <input  name="pin[]" class="form-control" type="number">
-                                            </div>
-                                           
-                                        </div>
+                       
                                     </div>
                                    <div class="form-group col-md-10">
 
