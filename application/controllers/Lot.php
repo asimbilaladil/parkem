@@ -38,6 +38,12 @@ class Lot extends CI_Controller {
             $lat = $this->input->post('lat');
             $lng = $this->input->post('lng');
             $admin_id = $this->session->userdata('id');
+
+            $unit = $this->input->post('unit');
+            $pin = $this->input->post('pin');
+           
+            
+
             $data = array(
                'name' => $name, 
                'hour' =>  $hour, 
@@ -48,7 +54,24 @@ class Lot extends CI_Controller {
                'lng' => $lng,
                'admin_id' => $admin_id               
              );
-            $this->AdminModel->insert('lot', $data);      
+
+            $lot_id = $this->AdminModel->insert('lot', $data);      
+           
+            if($lot_id != false){
+              
+              for ($i=0; $i < count($unit); $i++) { 
+                var_dump($unit[$i]);
+                $unitData = array(
+                  'name' => $unit[$i], 
+                  'pin' => $pin[$i],
+                  'lot' => $lot_id,
+                  'admin_id' => $admin_id 
+                );
+                $this->AdminModel->insert('unit', $unitData);
+              }
+
+            }
+
         }
         redirect('Lot');        
     }

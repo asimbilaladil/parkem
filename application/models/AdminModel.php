@@ -14,7 +14,7 @@ class AdminModel extends CI_Model {
      */
     public function insert( $tableName ,$data ){
         if ($this->db->insert($tableName, $data) ) {
-            return true;
+            return $insert_id = $this->db->insert_id();
         } 
         return false;
     }
