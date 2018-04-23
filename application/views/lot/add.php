@@ -59,8 +59,8 @@
                                      <input id="lng"  name="lng" class="form-control" type="hidden">
                                       <input id="lat"  name="lat" class="form-control" type="hidden">
                                                                                                             
-                                    <div class="unitDiv">
-                                        <div class="form-group col-md-6">
+                                    <div class="unitDiv form-group col-md-12">
+                                        <div class="form-group col-md-5">
                                             <label class=" form-control-label col-md-12">Unit #</label>
                                             <div class="input-group col-md-8">
                                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
@@ -69,7 +69,7 @@
                                            
                                         </div>
                                       
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-5">
                                             <label class=" form-control-label col-md-12">Pin</label>
                                             <div class="input-group col-md-8">
                                                 <div class="input-group-addon"><i class="fa fa-usd"></i></div>
@@ -80,7 +80,7 @@
                                     </div>
                                    <div class="form-group col-md-10">
 
-                                      <button style=" margin-left: 10px; " onclick="addUnits()" type="button" class="btn btn-outline-success btn-lg pull-right">Add Unit</button> <button id="deleteUnitButton" style="display: none;" onclick="removeUnits()" type="button" class="btn btn-outline-danger btn-lg pull-right">Delete Unit</button>
+                                      <button style=" margin-left: 10px; " onclick="addUnits()" type="button" class="btn btn-outline-success btn-lg pull-right">Add Unit</button> 
                                     </div>
                                    
                                                               
@@ -105,27 +105,25 @@
         </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+    .unitDiv{
+    max-height: 250px;
+    overflow-y: scroll;
+}
 
+</style>
 <script>
     var count = 1;
     function addUnits(){
         count++;
-        var unitHTML = '<div class="childUnit_'+count+'"><div class="form-group col-md-6"><label class=" form-control-label col-md-12">Unit #</label><div class="input-group col-md-8"><div class="input-group-addon"><i class="fa fa-user"></i></div><input name="unit[]" class="form-control" type="text"></div></div><div class="form-group col-md-6"><label class=" form-control-label col-md-12">Pin</label> <div class="input-group col-md-8"><div class="input-group-addon"><i class="fa fa-usd"></i></div><input name="pin[]" class="form-control" type="number"></div></div></div>';
+        var unitHTML = '<div class="childUnit_'+count+'"><div class="form-group col-md-5"><label class=" form-control-label col-md-12">Unit #</label><div class="input-group col-md-8"><div class="input-group-addon"><i class="fa fa-user"></i></div><input name="unit[]" class="form-control" type="text"></div></div><div class="form-group col-md-5"><label class=" form-control-label col-md-12">Pin</label> <div class="input-group col-md-8"><div class="input-group-addon"><i class="fa fa-usd"></i></div><input name="pin[]" class="form-control" type="number"></div></div><div class="form-group col-md-2"><label class=" form-control-label col-md-12"></label><div class="input-group col-md-8"><button id="deleteUnitButton"  onclick="removeUnits('+count+')" type="button" class="btn btn-outline-danger btn-lg">Delete </button></div></div></div>';
         $('.unitDiv').append(unitHTML)
-        if(count > 1){
-            $('#deleteUnitButton').show();
-        } else if(count == 1){
-            $('#deleteUnitButton').hide();
-        }
+
     }
-    function removeUnits(){
-        $( ".childUnit_"+count ).remove();
-        count--;
-        if(count > 1){
-            $('#deleteUnitButton').show();
-        } else if(count == 1){
-            $('#deleteUnitButton').hide();
-        }        
+    function removeUnits(id){
+        $( ".childUnit_"+id ).remove();
+        
+             
     }
     function initAutocomplete() {
 
