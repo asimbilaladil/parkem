@@ -21,6 +21,7 @@
                                         <th>Fullname</th>
                                         <th>Username</th>
                                         <th>Email</th>
+                                        <th>Action</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -29,6 +30,7 @@
                                         <td><?php echo $item->fullname; ?></td>
                                         <td><?php echo $item->username; ?></td>
                                         <td><?php echo $item->email; ?></td>
+                                        <td><a href="<?php echo site_url('Admin/delete?id='.$item->id); ?>"><span><i class="fa fa-trash"></i></span></a></td>
                                       </tr>
                                         <?php } ?>
                                      

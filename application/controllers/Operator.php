@@ -25,7 +25,11 @@ class Operator extends CI_Controller {
     {
           $this->loadView('operator/add', null);
     }
-
+    public function delete(){
+        $id = $this->input->get('id');
+        $this->AdminModel->delete('operator', $id);
+        redirect('Operator');    
+    }    
     public function save(){
         if($this->input->post()) {
 

@@ -20,7 +20,11 @@ class Lot extends CI_Controller {
 		$data['lots'] = $this->AdminModel->getAllfromTable('lot');
         $this->loadView('lot/index', $data);
 	}
-
+    public function delete(){
+        $id = $this->input->get('id');
+        $this->AdminModel->delete('lot', $id);
+        redirect('Lot');    
+    }    
     public function add()
     {
           $this->loadView('lot/add', null);

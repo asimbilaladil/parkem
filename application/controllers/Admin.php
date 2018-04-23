@@ -25,7 +25,11 @@ class Admin extends CI_Controller {
     {
           $this->loadView('admin/add', null);
     }
-    
+    public function delete(){
+        $id = $this->input->get('id');
+        $this->AdminModel->delete('admin', $id);
+        redirect('Admin');    
+    }    
     public function save(){
         if($this->input->post()) {
 

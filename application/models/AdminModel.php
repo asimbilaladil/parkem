@@ -53,6 +53,13 @@ class AdminModel extends CI_Model {
         $quary_result=$this->db->get();
         $result = $quary_result->result();
         return $result;        
-    }    
+    } 
+
+    public function delete($table, $id) {
+      
+        $this->db->where('id', $id);
+        $this->db->update($table, array( 'is_delete' => 1 ));
+
+    }  
 
 }
