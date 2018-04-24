@@ -15,6 +15,16 @@ class Lot extends CI_Controller {
         }      
     }   
 	
+  public function view(){
+      $id = $this->input->get('id');
+
+      $data['lotData'] = $this->AdminModel->getfromTableById('lot', $id);
+      $data['unitData'] = $this->AdminModel->getUnitData('unit', $id);
+
+      $this->loadView('operator/view', $data);
+
+
+    }  
 	public function index()
 	{
 		$data['lots'] = $this->AdminModel->getAllfromTable('lot');
@@ -64,7 +74,7 @@ class Lot extends CI_Controller {
             if($lot_id != false){
               
               for ($i=0; $i < count($unit); $i++) { 
-                var_dump($unit[$i]);
+
                 $unitData = array(
                   'name' => $unit[$i], 
                   'pin' => $pin[$i],

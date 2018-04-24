@@ -60,6 +60,34 @@ class AdminModel extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update($table, array( 'is_delete' => 1 ));
 
-    }  
+    } 
+    public function update($table, $id, $data) {
+      
+        $this->db->where('id', $id);
+        $this->db->update($table, $data);
+
+    }     
+
+    public function getfromTableById( $tableName, $id ) {
+        $this->db->select('*');
+        $this->db->from( $tableName );
+        $this->db->where( 'id', $id );
+        $this->db->where( 'is_delete', 0 );
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;        
+    } 
+
+    public function getUnitData( $tableName, $id ) {
+        $this->db->select('*');
+        $this->db->from( $tableName );
+        $this->db->where( 'lot', intval($id) );
+        $this->db->where( 'is_delete', 0 );
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;        
+    } 
+
+
 
 }

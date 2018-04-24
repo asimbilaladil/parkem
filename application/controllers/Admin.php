@@ -49,8 +49,43 @@ class Admin extends CI_Controller {
         }
         redirect('Admin');        
     }
+    public function view(){
+        $id = $this->input->get('id');
+        $data['userData'] = $this->AdminModel->getfromTableById('admin', $id);
+
+        $this->loadView('operator/view', $data);
 
 
+    } 
+    public function edit(){
+
+        $id = $this->input->get('id');
+        $data['userData'] = $this->AdminModel->getfromTableById('admin', $id);
+
+        $this->loadView('admin/edit', $data);
+
+
+    } 
+
+    public function update(){
+
+        if($this->input->post()){
+
+            $id = $this->input->post('id');
+            $fullname = $this->input->post('fullname');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $admin_id = 1;
+            $data = array(
+               'fullname' => $fullname, 
+               'email' =>  $email, 
+               'username' => $username,
+               'admin_id' => 1
+             );
+            $this->AdminModel->update('admin', $id, $data);  
+            redirect('Admin');    
+        }
+    }
     /**
      * Load view 
      * @param 1 : view name

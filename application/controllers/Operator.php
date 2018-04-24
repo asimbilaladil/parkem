@@ -29,7 +29,44 @@ class Operator extends CI_Controller {
         $id = $this->input->get('id');
         $this->AdminModel->delete('operator', $id);
         redirect('Operator');    
-    }    
+    }
+    public function view(){
+        $id = $this->input->get('id');
+        $data['userData'] = $this->AdminModel->getfromTableById('operator', $id);
+
+        $this->loadView('operator/view', $data);
+
+
+    }  
+    public function edit(){
+
+        $id = $this->input->get('id');
+        $data['userData'] = $this->AdminModel->getfromTableById('operator', $id);
+
+        $this->loadView('operator/edit', $data);
+
+
+    } 
+
+    public function update(){
+
+        if($this->input->post()){
+
+            $id = $this->input->post('id');
+            $fullname = $this->input->post('fullname');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $admin_id = 1;
+            $data = array(
+               'fullname' => $fullname, 
+               'email' =>  $email, 
+               'username' => $username,
+               'admin_id' => 1
+             );
+            $this->AdminModel->update('operator', $id, $data);  
+            redirect('Operator');    
+        }
+    }
     public function save(){
         if($this->input->post()) {
 
@@ -47,7 +84,7 @@ class Operator extends CI_Controller {
              );
             $this->AdminModel->insert('operator', $data);      
         }
-        redirect('Admin');        
+        redirect('Operator');        
     }
 
 	/**

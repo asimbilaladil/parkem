@@ -30,7 +30,10 @@
                                         <td><?php echo $item->fullname; ?></td>
                                         <td><?php echo $item->username; ?></td>
                                         <td><?php echo $item->email; ?></td>
-                                        <td><a href="<?php echo site_url('Admin/delete?id='.$item->id); ?>"><span><i class="fa fa-trash"></i></span></a></td>
+                                        <td><a href="<?php echo site_url('Operator/view?id='.$item->id); ?>"><span><i class="fa fa-eye"></i></span></a>
+                                            <a href="<?php echo site_url('Operator/edit?id='.$item->id); ?>"><span><i class="fa fa-pencil"></i></span></a>
+                                            <a href="<?php echo site_url('Operator/delete?id='.$item->id); ?>"><span><i class="fa fa-trash"></i></span></a>
+                                        </td>
                                       </tr>
                                         <?php } ?>
                                      
