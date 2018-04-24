@@ -12,10 +12,16 @@ class Website extends CI_Controller {
    
     }   
 	
-	public function index()
-	{
+	public function index() { 
 
-        $this->loadView('website/index', null);
+        $data['lot'] = $this->AdminModel->getAllfromTable('lot');
+        $html = "";
+        foreach ($data['lot'] as $key => $value) {
+            $title = $value->name;
+            $html = $html . "placeMarker(map, $value->lat, $value->lng,true ,'$title' );";
+        }
+        $data['html'] = $html;
+        $this->loadView('website/index', $data);
 	}
 
    
