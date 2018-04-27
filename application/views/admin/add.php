@@ -6,7 +6,7 @@
                     <div class="col-xs-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Add</strong> <small>Operator</small>
+                                <strong>Add</strong> <small>Admin</small>
                             </div>
                             <form action="<?php echo site_url('Admin/save') ?>" method="post">
                                 

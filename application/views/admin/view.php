@@ -6,7 +6,7 @@
                     <div class="col-xs-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>View</strong> <small>Operator</small>
+                                <strong>View</strong> <small>Admin</small>
                             </div>
 
                                 

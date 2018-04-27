@@ -29,7 +29,7 @@
                                       <tr>
                                         <td><?php echo $item->name; ?></td>
                                         <td><?php echo $item->contact; ?></td>
-                                        <td><a href="<?php echo site_url('Lot/view?id='.$item->id); ?>"><span><i class="fa fa-eye"></i></span></a><a href="<?php echo site_url('Lot/delete?id='.$item->id); ?>"><span><i class="fa fa-trash"></i></span></a></td>
+                                        <td><a href="<?php echo site_url('Lot/view?id='.$item->id); ?>"><span><i class="fa fa-eye"></i></span></a><a href="<?php echo site_url('Lot/edit?id='.$item->id); ?>"><span><i class="fa fa-pencil"></i></span></a><a href="<?php echo site_url('Lot/delete?id='.$item->id); ?>"><span><i class="fa fa-trash"></i></span></a></td>
                                       </tr>
                                         <?php } ?>
                                      
