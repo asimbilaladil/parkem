@@ -74,7 +74,15 @@
 			<div id="content_gradient"></div>
 		</div>
 	</div>
+<script type="text/javascript">
 
+
+    var registerNumber =  function registerNumber(id){
+      	window.location = "<?php echo site_url('Website/register?id='); ?>"+ id;
+
+    }
+
+</script>
 
 	<!--[if IE]>
 	<script type="text/javascript" src="js/ie.min.js"></script>

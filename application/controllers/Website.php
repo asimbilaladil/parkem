@@ -18,12 +18,36 @@ class Website extends CI_Controller {
         $html = "";
         foreach ($data['lot'] as $key => $value) {
             $title = $value->name;
-            $html = $html . "placeMarker(map, $value->lat, $value->lng,true ,'$title' );";
+            $html = $html . "placeMarker(map, $value->lat, $value->lng,  $value->id  ,'$title');";
         }
         $data['html'] = $html;
         $this->loadView('website/index', $data);
 	}
+    
+    public function register() { 
 
+        if($this->input->get()){
+            $id = $this->input->get('id');
+            $data['data'] = $this->AdminModel->getfromTableById('lot', $id);
+            
+            $this->load->view('common/header');
+            $this->load->view('website/register', array('data' => $data));
+            $this->load->view('common/footer');
+        }   
+       
+    }    
+    public function saveNumberPlate() { 
+
+        if($this->input->get()){
+            $id = $this->input->get('id');
+            $data['data'] = $this->AdminModel->getfromTableById('lot', $id);
+            
+            $this->load->view('common/header');
+            $this->load->view('website/register', array('data' => $data));
+            $this->load->view('common/footer');
+        }   
+       
+    } 
    
 
 	/**
