@@ -7,55 +7,52 @@
                     <div class="col-xs-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Add</strong> <small>Lot</small>
+                                <strong>View</strong> <small>Lot</small>
                             </div>
-
-                                
                             
                                 <div class="card-body card-block">
-                                    <div class="form-group col-md-6">
-                                        <label class=" form-control-label col-md-12">Name</label>
-                                        <div class="input-group col-md-8">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <input  required name="name" class="form-control" type="text">
-                                        </div>
-                                       
-                                    </div>
-                                    <div class="form-group col-md-6" >
-                                        <label class=" form-control-label col-md-12">Address</label>
-                                        <div class="input-group col-md-8">
-                                            <div class="input-group-addon"><i class="fa fa-pin"></i></div>
-                                            
-                                            <input name="address" id="pac-input" class="form-control" type="text" placeholder="Search Box">
-                                        </div>
-                                        
-                                    </div>                                    
-                                                                  
-                                    <div class="form-group col-md-6">
-                                        <label class=" form-control-label col-md-12">Hour</label>
-                                        <div class="input-group col-md-8">
-                                            <div class="input-group-addon"><i class="fa fa-mail"></i></div>
-                                            <input required name="hour" class="form-control" type="number">
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label class=" form-control-label col-md-12">Day</label>
-                                        <div class="input-group col-md-8">
-                                            <div class="input-group-addon"><i class="fa fa-usd"></i></div>
-                                            <input required name="day" class="form-control" type="number">
-                                        </div>
-                                       
-                                    </div>
-                                 
+                                    <?php foreach ($data['lotData'] as $key => $value) {
+                                        # code...
+                                     ?>
                                     <div class="form-group col-md-12">
-                                        <label class=" form-control-label col-md-12">Contact</label>
-                                        <div class="input-group col-md-4">
-                                            <div class="input-group-addon"><i class="fa fa-pin"></i></div>
-                                            <input  required name="contact" class="form-control" type="text">
-                                        </div>
-                                        
-                                    </div>                                         
+                                        <label class=" form-control-label col-md-4">Name</label>
+
+                                        <label class=" form-control-label col-md-4"><?php echo $value->name; ?></label>
+
+                                       
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class=" form-control-label col-md-4">Address</label>
+
+                                        <label class=" form-control-label col-md-4"><?php echo $value->address; ?></label>
+                                       
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class=" form-control-label col-md-4">Hour</label>
+
+                                        <label class=" form-control-label col-md-4"><?php echo $value->hour; ?></label>
+                                       
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label class=" form-control-label col-md-4">Day</label>
+
+                                        <label class=" form-control-label col-md-4"><?php echo $value->day; ?></label>
+                                       
+                                    </div>                                    
+                                    <div class="form-group col-md-12">
+                                        <label class=" form-control-label col-md-4">Contact</label>
+
+                                        <label class=" form-control-label col-md-4"><?php echo $value->contact; ?></label>
+                                       
+                                    </div>                                     
+                                    
+                                   <?php } ?>
+                                
+                                </div>
+ 
+                            
+                                <div class="card-body card-block">
+                                                           
                                      
                                                                                                             
                                     <div class="unitDiv form-group col-md-12">
@@ -69,7 +66,7 @@
                                                 <label class=" form-control-label col-md-12">Unit #</label>
                                                 <div class="input-group col-md-8">
                                                    
-                                                   <label class=" form-control-label col-md-12"><?php echo $value->unit; ?></label>
+                                                   <label class=" form-control-label col-md-12"><?php echo $value->name; ?></label>
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-5">
@@ -109,6 +106,4 @@
      
 
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCux8E5j2vMYKpkJ33BAWTVIuRuLvFCEKU&libraries=places&callback=initAutocomplete">
-    </script>
+   

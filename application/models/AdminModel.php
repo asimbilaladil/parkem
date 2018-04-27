@@ -61,6 +61,13 @@ class AdminModel extends CI_Model {
         $this->db->update($table, array( 'is_delete' => 1 ));
 
     } 
+
+
+    public function deleteUnit($table, $id){
+
+        $this->db->where('lot', $id);
+        $this->db->update($table, array( 'is_delete' => 1 ));
+    }
     public function update($table, $id, $data) {
       
         $this->db->where('id', $id);

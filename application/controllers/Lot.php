@@ -21,10 +21,73 @@ class Lot extends CI_Controller {
       $data['lotData'] = $this->AdminModel->getfromTableById('lot', $id);
       $data['unitData'] = $this->AdminModel->getUnitData('unit', $id);
 
-      $this->loadView('operator/view', $data);
+      $this->loadView('lot/view', $data);
 
 
     }  
+  
+  public function edit(){
+      $id = $this->input->get('id');
+
+      $data['lotData'] = $this->AdminModel->getfromTableById('lot', $id);
+      $data['unitData'] = $this->AdminModel->getUnitData('unit', $id);
+
+      $this->loadView('lot/edit', $data);
+
+
+    }
+
+    public function update(){
+
+        if($this->input->post()){
+
+            $id = $this->input->post('id');
+
+            $name = $this->input->post('name');
+            $hour = $this->input->post('hour');
+            $day = $this->input->post('day');
+            $contact = $this->input->post('contact');
+            $address = $this->input->post('address');
+
+            $lat = $this->input->post('lat');
+            $lng = $this->input->post('lng');
+            $admin_id = $this->session->userdata('id');
+
+            $unit = $this->input->post('unit');
+            $pin = $this->input->post('pin');
+
+
+            $data = array(
+               'name' => $name, 
+               'hour' =>  $hour, 
+               'day' => $day, 
+               'contact' => $contact,
+               'address' => $address,
+               'lat' => $lat, 
+               'lng' => $lng,
+               'admin_id' => $admin_id               
+             );
+            $this->AdminModel->update('lot', $id, $data);    
+           $this->AdminModel->deleteUnit('unit', $id); 
+           if($id != false){
+              
+              for ($i=0; $i < count($unit); $i++) { 
+
+                $unitData = array(
+                  'name' => $unit[$i], 
+                  'pin' => $pin[$i],
+                  'lot' => $id,
+                  'admin_id' => $admin_id 
+                );
+
+                $this->AdminModel->insert('unit', $unitData);
+              }
+
+            }            
+            redirect('Lot');    
+        }
+    }
+
 	public function index()
 	{
 		$data['lots'] = $this->AdminModel->getAllfromTable('lot');

@@ -37,13 +37,13 @@ class Admin extends CI_Controller {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
             $username = $this->input->post('username');
-            $admin_id = 1;//$this->session->userdata('user_id');
+            $admin_id =$this->session->userdata('user_id');
             $data = array(
                'fullname' => $fullname, 
                'email' =>  $email, 
                'password' => md5($password), 
                'username' => $username,
-               'admin_id' => 1
+               'admin_id' => $admin_id 
              );
             $this->AdminModel->insert('admin', $data);
         }
@@ -75,12 +75,12 @@ class Admin extends CI_Controller {
             $fullname = $this->input->post('fullname');
             $email = $this->input->post('email');
             $username = $this->input->post('username');
-            $admin_id = 1;
+            $admin_id = $this->session->userdata('user_id');
             $data = array(
                'fullname' => $fullname, 
                'email' =>  $email, 
                'username' => $username,
-               'admin_id' => 1
+               'admin_id' =>  $admin_id 
              );
             $this->AdminModel->update('admin', $id, $data);  
             redirect('Admin');    
