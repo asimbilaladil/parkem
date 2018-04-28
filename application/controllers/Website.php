@@ -24,31 +24,6 @@ class Website extends CI_Controller {
         $this->loadView('website/index', $data);
 	}
     
-    public function register() { 
-
-        if($this->input->get()){
-            $id = $this->input->get('id');
-            $data['data'] = $this->AdminModel->getfromTableById('lot', $id);
-            
-            $this->load->view('common/header');
-            $this->load->view('website/register', array('data' => $data));
-            $this->load->view('common/footer');
-        }   
-       
-    }    
-    public function saveNumberPlate() { 
-
-        if($this->input->get()){
-            $id = $this->input->get('id');
-            $data['data'] = $this->AdminModel->getfromTableById('lot', $id);
-            
-            $this->load->view('common/header');
-            $this->load->view('website/register', array('data' => $data));
-            $this->load->view('common/footer');
-        }   
-       
-    } 
-   
 
 	/**
      * Load view 

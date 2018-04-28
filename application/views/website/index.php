@@ -13,7 +13,7 @@
 			<div id="content_header"></div>
 			<div id="content_tabs">
 				<a href="/select-lot/mode=map" class="selected">Map</a>
-				<a href="/select-lot/mode=code">Location ID</a>
+				<a href="<?php echo site_url('Location'); ?>">Location ID</a>
 			</div>
 			<div id="content_messages">
 			</div>
@@ -78,7 +78,7 @@
 
 
     var registerNumber =  function registerNumber(id){
-      	window.location = "<?php echo site_url('Website/register?id='); ?>"+ id;
+      	window.location = "<?php echo site_url('Register?id='); ?>"+ id;
 
     }
 

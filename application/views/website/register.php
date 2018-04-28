@@ -8,7 +8,7 @@
                     # code...
                  ?>
                 <div class="login-form">
-                    <form action="<?php echo site_url('Website/saveNumberPlate') ?>" method="post">
+                    <form action="<?php echo site_url('Register/saveNumberPlate') ?>" method="post">
                         <div class="form-group">
                             <label>Lot</label>
                             <input disabled value="<?php echo $data['data'][0]->name; ?>" type="text" class="form-control"  name="lot">
