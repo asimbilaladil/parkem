@@ -11,8 +11,8 @@
                     <form action="<?php echo site_url('Register/saveNumberPlate') ?>" method="post">
                         <div class="form-group">
                             <label>Lot</label>
-                            <input disabled value="<?php echo $data['data'][0]->name; ?>" type="text" class="form-control"  name="lot">
-                            <input disabled value="<?php echo $data['data'][0]->id; ?>" type="hidden" class="form-control"  name="lot">
+                            <input disabled value="<?php echo $data['data'][0]->name; ?>" type="text" class="form-control"  name="name">
+                            <input  value="<?php echo $data['data'][0]->id; ?>" type="hidden" class="form-control"  name="id">
                         </div>
                         <div class="form-group">
                             <label>Number Plate</label>

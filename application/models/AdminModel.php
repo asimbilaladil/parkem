@@ -85,6 +85,16 @@ class AdminModel extends CI_Model {
         return $result;        
     } 
 
+    public function getNumberPlateById( $number_plate ) {
+        $this->db->select('*');
+        $this->db->from( 'number_plates' );
+        $this->db->where( 'number_plate', $number_plate );
+        $this->db->where( 'is_delete', 0 );
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;        
+    }     
+
     public function getUnitData( $tableName, $id ) {
         $this->db->select('*');
         $this->db->from( $tableName );

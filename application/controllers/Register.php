@@ -23,12 +23,42 @@ class Register extends CI_Controller {
         } 
 	}
     
+
   
     public function saveNumberPlate() { 
 
-        if($this->input->get()){
 
-            
+
+        if($this->input->post()){
+
+            $id = $this->input->post('id');
+            $number_plate = $this->input->post('number_plate');
+            $lotData = $this->AdminModel->getfromTableById('lot', $id);
+
+            if( count($lotData) > 0){
+
+                $numberPlate_data = $this->AdminModel->getNumberPlateById($number_plate);
+                
+                if(count($numberPlate_data) == 0 ){
+                    $newNumberPlateData = array(
+                        'number_plate' =>  $number_plate
+                    );                    
+                    $numberPlate_id = $this->AdminModel->insert('number_plates', $newNumberPlateData); 
+                } else {
+                    $numberPlate_id = $numberPlate_data[0]->id;
+                }
+                $register_time =  date("d-m-Y h:i:s");
+                $additional_time = "+".$lotData[0]->hour. "hours";
+                $data = array(
+                   'lot' => $id, 
+                   'number_plate' =>  $numberPlate_id, 
+                   'time_in' => strtotime($register_time), 
+                   'time_out' => strtotime($register_time .$additional_time)
+                );
+
+
+                $this->AdminModel->insert('register_plates', $data);                
+            } 
 
 
         }   
