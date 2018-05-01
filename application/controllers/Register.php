@@ -31,12 +31,12 @@ class Register extends CI_Controller {
 
         if($this->input->post()){
 
-            $id = $this->input->post('id');
+           echo $id = $this->input->post('id');
             $number_plate = $this->input->post('number_plate');
             $lotData = $this->AdminModel->getfromTableById('lot', $id);
 
             if( count($lotData) > 0){
-
+                echo "Inside";
                 $numberPlate_data = $this->AdminModel->getNumberPlateById($number_plate);
                 
                 if(count($numberPlate_data) == 0 ){
@@ -57,7 +57,9 @@ class Register extends CI_Controller {
                 );
 
 
-                $this->AdminModel->insert('register_plates', $data);                
+                $this->AdminModel->insert('register_plates', $data);   
+                redirect('', 'location'); 
+
             } 
 
 

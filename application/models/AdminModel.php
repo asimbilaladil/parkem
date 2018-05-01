@@ -106,5 +106,16 @@ class AdminModel extends CI_Model {
     } 
 
 
+    public function verifyNumberPlate($number_plate, $lot, $current_time){
+
+        $query = $this->db->query("SELECT * from register_plates where time_out >= $current_time and lot = $lot and is_delete = 0 and number_plate = (select id from number_plates where number_plate = '$number_plate' and is_delete = 0) ");
+
+        $query->result();
+
+        return $query->result();
+
+    }
+
+
 
 }

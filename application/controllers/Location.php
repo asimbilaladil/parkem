@@ -25,16 +25,7 @@ class Location extends CI_Controller {
     
     
   
-    public function saveNumberPlate() { 
 
-        if($this->input->get()){
-
-            
-
-
-        }   
-       
-    } 
     
    
 

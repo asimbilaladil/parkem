@@ -8,14 +8,14 @@
                 </div>
                 
                 <div class="login-form">
-                    <form action="<?php echo site_url('Location/saveNumberPlate') ?>" method="post">
+                    <form action="<?php echo site_url('Register/saveNumberPlate') ?>" method="post">
                         <div class="form-group">
                             <label>Lot</label>
-                            <select class="form-control" id="" name="lot"  data-live-search="true">
+                            <select class="form-control" id="" name="id"  data-live-search="true">
                                 <?php foreach ($data['data'] as  $value) {
                                     # code...
                                 ?>
-                                <option  value="<?php echo $value->id; ?>" ><?php echo $value->name; ?></option>
+                                <option selected  value="<?php echo $value->id; ?>" ><?php echo $value->name; ?></option>
 
                                 <?php } ?>
                             </select>
