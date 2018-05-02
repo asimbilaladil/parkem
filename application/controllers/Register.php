@@ -17,7 +17,7 @@ class Register extends CI_Controller {
 
         if($this->input->get()){
             $id = $this->input->get('id');
-            $data['data'] = $this->AdminModel->getfromTableById('lot', $id);
+            $data['data'] = $this->AdminModel->getLotData( $id);
             
             $this->loadView('website/register', $data);
         } 
@@ -31,12 +31,12 @@ class Register extends CI_Controller {
 
         if($this->input->post()){
 
-           echo $id = $this->input->post('id');
+            $id = $this->input->post('id');
             $number_plate = $this->input->post('number_plate');
             $lotData = $this->AdminModel->getfromTableById('lot', $id);
 
             if( count($lotData) > 0){
-                echo "Inside";
+                
                 $numberPlate_data = $this->AdminModel->getNumberPlateById($number_plate);
                 
                 if(count($numberPlate_data) == 0 ){
@@ -66,7 +66,20 @@ class Register extends CI_Controller {
         }   
        
     } 
-    
+    function verifyPin(){
+
+        if($this->input->post()){
+
+            $id = $this->input->post('id');
+            $unit_id = $this->input->post('unit_id');
+            $unit_pin = $this->input->post('unit_pin');
+            $result = $this->AdminModel->verifyUnitPin($id, $unit_id, $unit_pin);
+
+            if( count($result) > 0){
+                echo true;
+            } 
+        }
+    }
    
 
 	/**
