@@ -107,7 +107,7 @@ class AdminModel extends CI_Model {
 
     public function getLotData( $id ){
 
-        $query = $this->db->query(" SELECT lot.`id`, lot.`name`, lot.`hour`, lot.`day`, lot.`contact`, lot.`lat`, lot.`lng`, lot.`address`, lot.`admin_id`, lot.`is_delete`, GROUP_CONCAT(unit.name) as unit_name, GROUP_CONCAT(unit.id) as unit_id, GROUP_CONCAT(unit.pin) as unit_pin FROM `lot` left join unit on lot.id = unit.lot where lot.`is_delete` = 0  and unit.is_delete = 0 and lot.`id` = $id GROUP BY lot.id ");
+        $query = $this->db->query(" SELECT lot.`id`, lot.`name`, lot.`hour`, lot.`day`, lot.`contact`, lot.`lat`, lot.`lng`, lot.`address`, lot.`admin_id`, lot.`is_delete`, GROUP_CONCAT(unit.name) as unit_name, GROUP_CONCAT(unit.id) as unit_id, GROUP_CONCAT(unit.pin) as unit_pin FROM `lot` left join unit on lot.id = unit.lot where lot.`is_delete` = 0  and unit.is_delete = 0 and lot.`id` = $id  and unit.is_delete is not null ");
 
                 $query->result();
 

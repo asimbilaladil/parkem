@@ -23,7 +23,17 @@ class Location extends CI_Controller {
 
 	}
     
-    
+      
+    public function getFormHTML(){
+        
+        if($this->input->post()){
+            
+            $id = $this->input->post('id');       
+            $data['data'] = $this->AdminModel->getLotData( $id );   
+            
+            return $this->load->view('website/location-register-number-plate', array('data' => $data));
+        }
+    }
   
 
     

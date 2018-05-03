@@ -33,7 +33,9 @@ class Register extends CI_Controller {
 
             $id = $this->input->post('id');
             $number_plate = $this->input->post('number_plate');
+            $unit_name =  ( empty( $this->input->post('unit_name') ) ) ? 0 : $this->input->post('unit_name')  ;
             $lotData = $this->AdminModel->getfromTableById('lot', $id);
+
 
             if( count($lotData) > 0){
                 
@@ -53,7 +55,8 @@ class Register extends CI_Controller {
                    'lot' => $id, 
                    'number_plate' =>  $numberPlate_id, 
                    'time_in' => strtotime($register_time), 
-                   'time_out' => strtotime($register_time .$additional_time)
+                   'time_out' => strtotime($register_time .$additional_time),
+                   'unit' =>  $unit_name
                 );
 
 
@@ -66,7 +69,7 @@ class Register extends CI_Controller {
         }   
        
     } 
-    function verifyPin(){
+    public function verifyPin(){
 
         if($this->input->post()){
 
@@ -80,7 +83,7 @@ class Register extends CI_Controller {
             } 
         }
     }
-   
+ 
 
 	/**
      * Load view 
