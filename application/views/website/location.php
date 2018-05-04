@@ -28,6 +28,7 @@
                                 <?php } ?>
                             </select>
                         </div>
+
                         <div class="registerForm">
                             
                         </div>
@@ -60,6 +61,28 @@
             }
         });         
     }
+
+    var loadUnitForm = function loadUnitForm(){
+        var lot_id = $('#id').val();
+        if($('#unitCheckbox').is(":checked")){
+            $.ajax({
+                url: "<?php echo site_url('Location/getUnitFormHTML') ?>",
+                type: "POST",
+                data: {
+                    'id': lot_id
+                },
+                success: function(response) {
+                    $('.unitForm').html(response)
+                   
+                },
+                error: function() {
+                }
+            });
+       } else {
+            loadForm();
+       }
+         
+    }    
     var verifyPin = function verifyPin() {
         var id = $('#id').val();
         var unit_id = $('#unit_name').val(); 

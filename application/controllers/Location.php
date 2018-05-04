@@ -35,6 +35,16 @@ class Location extends CI_Controller {
         }
     }
   
+    public function getUnitFormHTML(){
+        
+        if($this->input->post()){
+            
+            $id = $this->input->post('id');       
+            $data['data'] = $this->AdminModel->getLotData( $id );   
+            
+            return $this->load->view('website/location-unit-register-number-plate', array('data' => $data));
+        }
+    }
 
     
    

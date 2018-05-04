@@ -43,24 +43,22 @@
                             <input disabled value="<?php echo $data['data'][0]->name; ?>" type="text" class="form-control"  name="name">
                             <input id="id" value="<?php echo $data['data'][0]->id; ?>" type="hidden" class="form-control"  name="id">
                         </div>
-                        <div class="form-group">
-                            <label>Unit</label>
-                            <select id="unit_name" name="unit_name" class="form-control" > 
-                                <?php for ($i=0; $i < count( $unitName ) ; $i++) {?>
-                                <option value="<?php echo $unitId[$i]; ?>"><?php echo $unitName[$i]; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>                        
-                        <div class="form-group">
-                            <label>Unit Pin</label>
-                            <input required type="password" class="form-control" placeholder="Unit Pin" id="unit_pin" name="unit_pin">
-                        </div>
-                        <div class="form-group">
-                            <label>Number Plate</label>
-                            <input required type="text" class="form-control" placeholder="Number Plate" name="number_plate">
-                        </div>
-                        
-                        <button onclick="verifyPin()" type="button" class="btn btn-success btn-flat m-b-30 m-t-30">Save</button>
+                        <div class="registerForm">
+                            
+                                    
+                            <div class="form-group">
+                                <p> <input onchange="loadUnitForm()" type="checkbox" id="unitCheckbox"> Visiting a specific Unit?</p>
+                            </div>
+                            <div class="unitForm">
+                                
+                                <div class="form-group">
+                                    <label>Number Plate</label>
+                                    <input required type="text" class="form-control" placeholder="Number Plate" name="number_plate">
+                                </div>
+                                
+                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Register</button>
+                            </div>
+                        </div>  
                        <?php } ?>
                         
                     </form>
@@ -95,5 +93,42 @@
             }
         });        
     }
+    var loadForm = function loadForm(){
+        var lot_id = $('#id').val();
+        $.ajax({
+            url: "<?php echo site_url('Location/getFormHTML') ?>",
+            type: "POST",
+            data: {
+                'id': lot_id
+            },
+            success: function(response) {
+                $('.registerForm').html(response)
+               
+            },
+            error: function() {
+            }
+        });         
+    }
 
+    var loadUnitForm = function loadUnitForm(){
+        var lot_id = $('#id').val();
+        if($('#unitCheckbox').is(":checked")){
+            $.ajax({
+                url: "<?php echo site_url('Location/getUnitFormHTML') ?>",
+                type: "POST",
+                data: {
+                    'id': lot_id
+                },
+                success: function(response) {
+                    $('.unitForm').html(response)
+                   
+                },
+                error: function() {
+                }
+            });
+       } else {
+            loadForm();
+       }
+         
+    }  
 </script>
