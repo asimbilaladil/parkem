@@ -30,7 +30,11 @@
                     <li >
                         <a href="<?php echo site_url('Lot') ?>"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Lot</a>
                         
-                    </li>    
+                    </li>
+                     <li >
+                        <a href="<?php echo site_url('Register_Number_Plates') ?>"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Register Number Plates</a>
+                        
+                    </li>                        
                                      
                    
                    

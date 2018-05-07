@@ -122,6 +122,18 @@ class AdminModel extends CI_Model {
         return $query->result();
 
     }
+
+    public function getRegisterNumberPlates(){
+
+        $query = $this->db->query("SELECT u.name as unitName, u.pin as unitPin, np.number_plate as numberPlate, l.name as lotName, rp.time_in as timeIn , rp.time_out as timeOut FROM `register_plates` as rp left join lot as l on rp.lot = l.id left join number_plates as np on rp.`number_plate` = np.id left join unit as u on rp.unit = u.id where rp.is_delete != 1 and np.is_delete != 1 AND l.is_delete != 1");
+
+        $query->result();
+
+        return $query->result();
+
+    }
+
+
     public function verifyUnitPin($id, $unit_id, $unit_pin){
 
         $this->db->select('*');
