@@ -9,7 +9,7 @@
                                 <strong class="card-title ">Register Number Plates</strong>
                             </div>    
                             <div class="col-md-8">
-                                <a href="<?php echo site_url('Operator/Add') ?>"><button type="button" class="btn btn-outline-success pull-right"><i class="fa fa-plus"></i>&nbsp; Add</button></a>
+                                <a href="<?php echo site_url('Register_Number_Plates/Add') ?>"><button type="button" class="btn btn-outline-success pull-right"><i class="fa fa-plus"></i>&nbsp; Add</button></a>
                                 
                             </div>
                             <div class="col-md-4">
