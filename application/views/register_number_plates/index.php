@@ -23,6 +23,16 @@
 
                                 
                             </div>
+                            <div class="col-md-4">
+                                <label> Filter By Blacklist </label>
+                                   <select onchange="filterBlacklist()" class="form-control" id="blacklist">
+                                        <option>Select Blacklist</option>
+                                        <option>Blacklist</option>
+                                        <option>Non Blacklist</option>
+                                   </select>
+
+                                
+                            </div>                            
                             <div class="col-md-12">
                                 <br>
                                  <table class="table-striped" id="registerNumberPlatesTable">
@@ -35,7 +45,8 @@
                                         <th>Number Plate</th>
                                         <th>Register Date</th>
                                         <th>Register Time</th>
-                                        
+                                        <th>Blacklist</th>
+                                        <th style="display: none;">Blacklist Filter</th>
                                         
                                       </tr>
                                     </thead>
@@ -48,6 +59,16 @@
                                         <td><?php echo $item->numberPlate; ?></td>
                                         <td><?php echo date("d-m-Y",$item->timeIn); ?></td>
                                         <td><?php echo date("h:i:s A",$item->timeIn); ?></td>
+                                        <td> 
+                                            <?php if( $item->blacklist_id == null ){ ?>
+                                                <a  href="<?php echo site_url('Register_Number_Plates/addBlacklist?id='.$item->register_plates_id); ?>" ><span style=" color: #28a745; "><i class="fa fa-check"></i></span></a>
+                                            <?php } else {?>
+                                                <a  href="<?php echo site_url('Register_Number_Plates/removeBlacklist?id='.$item->blacklist_id); ?>"><span style=" color: #b92222; "><i class="fa fa-times"></i></span></a>
+
+                                            <?php } ?>
+
+                                        </td>
+                                        <td style="display: none;" ><?php echo ($item->blacklist_id == null ? 'no' : 'yes'); ?></td>
 
                                       </tr>
                                         <?php } ?>
@@ -89,6 +110,31 @@
         }
 
     }
+
+    var filterBlacklist = function filterBlacklist(){
+        var blacklist = $('#blacklist option:selected').text();
+        
+        if(blacklist == 'Select Blacklist'){
+            table
+                 .search( '' )
+                 .columns().search( '' )
+                 .draw();
+
+        } else if (blacklist == 'Blacklist') {
+
+            table
+                .column(7)
+                .search('yes')
+                .draw(); 
+        } else if(blacklist == 'Non Blacklist') {
+            console.log(blacklist)
+            table
+                .column(7)
+                .search('no')
+                .draw(); 
+        }
+
+    }    
 
 
 </script>        

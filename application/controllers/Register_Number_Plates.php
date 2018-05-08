@@ -26,6 +26,28 @@ class Register_Number_Plates extends CI_Controller {
       $data['data'] = $this->AdminModel->getLotNames();
       $this->loadView('register_number_plates/add', $data);
     } 
+    public function removeBlacklist(){
+
+        if( $this->input->get() ){
+            $id = $this->input->get('id');
+            $this->AdminModel->deleteBlacklistNumberPlate( $id );
+            redirect('Register_Number_Plates');
+        }
+        
+    
+    }     
+    public function addBlacklist(){
+      
+        if( $this->input->get() ){
+            $id = $this->input->get('id');
+            $data = array(
+                'register_plates_id' =>  $id,
+                'createdOn' =>  date("d-m-Y h:i:s") 
+            );
+            $this->AdminModel->insert( 'blacklist', $data );
+            redirect('Register_Number_Plates');
+        }
+    }         
     public function saveNumberPlate() { 
 
 
