@@ -91,6 +91,15 @@ class AdminModel extends CI_Model {
         return $result;        
     } 
 
+    public function getBlacklistNumberById( $tableName, $id ) {
+        $this->db->select('*');
+        $this->db->from( $tableName );
+        $this->db->where( 'register_plates_id', $id );
+
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result;        
+    } 
     public function getNumberPlateById( $number_plate ) {
         $this->db->select('*');
         $this->db->from( 'number_plates' );
@@ -131,7 +140,7 @@ class AdminModel extends CI_Model {
 
     public function getRegisterNumberPlates(){
 
-        $query = $this->db->query("SELECT rp.id as register_plates_id , b.id as blacklist_id, u.name as unitName, u.pin as unitPin, np.number_plate as numberPlate, l.name as lotName, rp.time_in as timeIn , rp.time_out as timeOut FROM `register_plates` as rp left join lot as l on rp.lot = l.id left join number_plates as np on rp.`number_plate` = np.id left join unit as u on rp.unit = u.id left join blacklist as b on b.`register_plates_id` = rp.id where rp.is_delete != 1 and np.is_delete != 1 AND l.is_delete != 1");
+        $query = $this->db->query("SELECT rp.id as register_plates_id , b.id as blacklist_id, u.name as unitName, u.pin as unitPin, np.number_plate as numberPlate, l.name as lotName, rp.time_in as timeIn , rp.time_out as timeOut FROM `register_plates` as rp left join lot as l on rp.lot = l.id left join number_plates as np on rp.`number_plate` = np.id left join unit as u on rp.unit = u.id left join blacklist as b on b.`register_plates_id` = np.id where  np.is_delete != 1 AND l.is_delete != 1");
 
         $query->result();
 
@@ -139,6 +148,15 @@ class AdminModel extends CI_Model {
 
     }
 
+    public function getBlacklistNumberPlates(){
+
+        $query = $this->db->query("SELECT np.number_plate, np.id as number_plate_id, b.id as blacklist_id FROM `blacklist` as b left join number_plates as np on b.register_plates_id = np.id where np.is_delete != 1");
+
+        $query->result();
+
+        return $query->result();
+
+    }
 
     public function verifyUnitPin($id, $unit_id, $unit_pin){
 
