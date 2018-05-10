@@ -45,7 +45,8 @@ class Blacklist extends CI_Controller {
                 $numberPlate_id = $numberPlate_data[0]->id;
             }
             $data = array(
-                'register_plates_id' =>  $numberPlate_id
+                'register_plates_id' =>  $numberPlate_id,
+                'createdOn' =>  date("d-m-Y h:i:s") 
             );    
             $blacklistData = $this->AdminModel->getBlacklistNumberById('blacklist', $numberPlate_id); 
             if(count($blacklistData) == 0 ){

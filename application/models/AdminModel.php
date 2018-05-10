@@ -140,7 +140,7 @@ class AdminModel extends CI_Model {
 
     public function getRegisterNumberPlates(){
 
-        $query = $this->db->query("SELECT rp.id as register_plates_id , b.id as blacklist_id, u.name as unitName, u.pin as unitPin, np.number_plate as numberPlate, l.name as lotName, rp.time_in as timeIn , rp.time_out as timeOut FROM `register_plates` as rp left join lot as l on rp.lot = l.id left join number_plates as np on rp.`number_plate` = np.id left join unit as u on rp.unit = u.id left join blacklist as b on b.`register_plates_id` = np.id where  np.is_delete != 1 AND l.is_delete != 1");
+        $query = $this->db->query("SELECT np.id as number_plates_id , rp.id as register_plates_id , b.id as blacklist_id, u.name as unitName, u.pin as unitPin, np.number_plate as numberPlate, l.name as lotName, rp.time_in as timeIn , rp.time_out as timeOut FROM `register_plates` as rp left join lot as l on rp.lot = l.id left join number_plates as np on rp.`number_plate` = np.id left join unit as u on rp.unit = u.id left join blacklist as b on b.`register_plates_id` = np.id where  np.is_delete != 1 AND l.is_delete != 1");
 
         $query->result();
 

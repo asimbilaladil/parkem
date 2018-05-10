@@ -61,7 +61,7 @@
                                         <td><?php echo date("h:i:s A",$item->timeIn); ?></td>
                                         <td> 
                                             <?php if( $item->blacklist_id == null ){ ?>
-                                                <a  href="<?php echo site_url('Register_Number_Plates/addBlacklist?id='.$item->register_plates_id); ?>" ><span style=" color: #28a745; "><i class="fa fa-check"></i></span></a>
+                                                <a  href="<?php echo site_url('Register_Number_Plates/addBlacklist?id='.$item->number_plates_id); ?>" ><span style=" color: #28a745; "><i class="fa fa-check"></i></span></a>
                                             <?php } else {?>
                                                 <a  href="<?php echo site_url('Register_Number_Plates/removeBlacklist?id='.$item->blacklist_id); ?>"><span style=" color: #b92222; "><i class="fa fa-times"></i></span></a>
 
