@@ -59,7 +59,6 @@ class Api extends REST_Controller  {
 
         $this->response($data);
     }
-
     function verifyNumberPlate_post(){
 
         if($this->post()){
@@ -67,22 +66,47 @@ class Api extends REST_Controller  {
             $number_plate = $this->post('number_plate');
             $lot = $this->post('lot');
             $current_time = strtotime(date("d-m-Y h:i:s"));
-            $result = $this->AdminModel->verifyNumberPlate($number_plate, $lot, $current_time);
+            $blacklistData = $this->AdminModel->checkBlacklistNumber($number_plate);
+            if(count($blacklistData) == 0){
+                $result = $this->AdminModel->verifyNumberPlate($number_plate, $lot, $current_time);
+                if(count($result) != 0){
+                    $data['data'] = $result;
+                    $data['status'] = "success"; 
+                    $data['message']  = "License Plate Verified Successfully";
+                } else{
+                    $data['data'] = [];
+                    $data['status'] = "fail"; 
+                    $data['message']  = "No data available";
+
+                }
+            } else {
+                $data['data'] = [];
+                $data['status'] = "success"; 
+                $data['message']  = "License Plate is Black Listed";
+            }
+
+            $this->response($data);
+        }     
+    } 
+    function getNumberPlatesbyLot_post(){
+        if($this->post()){
+
+            $lot = $this->post('lot');
+            $current_time = strtotime(date("d-m-Y h:i:s"));
+            $result = $this->AdminModel->getNumberPlatesByLot($lot, $current_time);
             if(count($result) != 0){
                 $data['data'] = $result;
                 $data['status'] = "success"; 
-                $data['message']  = "Verified Successfully";
+                $data['message']  = "Data available";
             } else{
                 $data['data'] = [];
-                $data['status'] = "fail"; 
+                $data['status'] = "success"; 
                 $data['message']  = "No data available";
 
             }
             $this->response($data);
         }
-       
-        
-    }     
+    }    
 
    
 }

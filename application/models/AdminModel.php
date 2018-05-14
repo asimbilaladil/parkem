@@ -158,6 +158,15 @@ class AdminModel extends CI_Model {
 
     }
 
+    public function checkBlacklistNumber($number_plate){
+        $query = $this->db->query("SELECT * FROM `blacklist` WHERE `register_plates_id` in (select id from number_plates where number_plate = '$number_plate' )");
+
+        $query->result();
+
+        return $query->result();
+
+
+    }
     public function verifyUnitPin($id, $unit_id, $unit_pin){
 
         $this->db->select('*');
@@ -170,6 +179,16 @@ class AdminModel extends CI_Model {
         $result = $quary_result->result();
         return $result; 
     }
+
+    public function getNumberPlatesByLot($lot, $time){
+        
+        $query = $this->db->query(" select *   from number_plates  where id in ( SELECT number_plate FROM `register_plates` where $time >= time_in and $time <= time_out and lot = $lot)");
+
+        $query->result();
+
+        return $query->result();        
+       
+    } 
 
 
 }
