@@ -50,7 +50,7 @@ class Register extends CI_Controller {
                     $numberPlate_id = $numberPlate_data[0]->id;
                 }
                 
-                date_default_timezone_set("Canada/Central");
+               
 
                 $register_time =  date("d-m-Y h:i:s");
                 $additional_time = "+".$lotData[0]->hour. "hours";
