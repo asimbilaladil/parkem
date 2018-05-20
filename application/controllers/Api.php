@@ -68,6 +68,7 @@ class Api extends REST_Controller  {
             $current_time = strtotime(date("d-m-Y h:i:s"));
             $blacklistData = $this->AdminModel->checkBlacklistNumber($number_plate);
             if(count($blacklistData) == 0){
+
                 $result = $this->AdminModel->verifyNumberPlate($number_plate, $lot, $current_time);
                 if(count($result) != 0){
                     $data['data'] = $result;
@@ -106,7 +107,75 @@ class Api extends REST_Controller  {
             }
             $this->response($data);
         }
+    }
+    function makeCitation_post(){
+        if($this->post()){
+
+            $lot = $this->post('lot_id');
+            $current_time = strtotime(date("d-m-Y h:i:s"));
+            $number_plate = $this->post('number_plate');
+            $image = $this->post('image');
+            $operator = $this->post('operator_id');
+           
+            $numberPlate_data = $this->AdminModel->getNumberPlateById($number_plate);
+                
+            if(count($numberPlate_data) == 0 ){
+                $newNumberPlateData = array(
+                    'number_plate' =>  $number_plate
+                );                    
+                $numberPlate_id = $this->AdminModel->insert('number_plates', $newNumberPlateData); 
+            } else {
+                $numberPlate_id = $numberPlate_data[0]->id;
+            }
+
+            $citation_data = array(
+               'lot' => $lot, 
+               'number_plate' =>  $numberPlate_id, 
+               'createdOn' => $current_time, 
+               'image' => $image,
+               'payment_status' => 'unpaid',
+               'operator' => $operator
+            );
+            $citation_id = $this->AdminModel->insert('citation', $citation_data);   
+
+
+            if($citation_id > 0){
+
+                $lotData = $this->AdminModel->getfromTableById('lot', $lot);
+                if(count($lotData) > 0) {
+
+                    $result = array(
+                       'lat' => $lotData[0]->lat,
+                       'lng' => $lotData[0]->lng,
+                       'lot_name' => $lotData[0]->name,
+                       'citation' => $citation_id,
+                       'lot_id' => $lot, 
+                       'number_plate' =>  $numberPlate_id, 
+                       'createdOn' => $current_time, 
+                       'image' => $image,
+                       'payment_status' => 'unpaid',
+                       'operator' => $operator                       
+                    );
+                    $data['data'][0] = $result;
+                    $data['status'] = "success"; 
+                    $data['message']  = "Data available";
+                } else {
+                    $data['data'] = [];
+                    $data['status'] = "success"; 
+                    $data['message']  = "Lot not found";
+                }
+        
+
+            } else{
+                $data['data'] = [];
+                $data['status'] = "fail"; 
+                $data['message']  = "Error while creating citation";
+
+            }
+            $this->response($data);
+        }
     }    
+        
 
    
 }
