@@ -113,6 +113,7 @@ class Api extends REST_Controller  {
 
             $lot = $this->post('lot_id');
             $current_time = strtotime(date("d-m-Y h:i:s"));
+            $createdOn = date("d-m-Y h:i:s");
             $number_plate = $this->post('number_plate');
             $image = $this->post('image');
             $operator = $this->post('operator_id');
@@ -131,7 +132,8 @@ class Api extends REST_Controller  {
             $citation_data = array(
                'lot' => $lot, 
                'number_plate' =>  $numberPlate_id, 
-               'createdOn' => $current_time, 
+               'createdOn' => $createdOn, 
+               'timestamp' => $current_time, 
                'image' => $image,
                'payment_status' => 'unpaid',
                'operator' => $operator
@@ -151,7 +153,8 @@ class Api extends REST_Controller  {
                        'citation' => $citation_id,
                        'lot_id' => $lot, 
                        'number_plate' =>  $numberPlate_id, 
-                       'createdOn' => $current_time, 
+                       'timestamp' => $current_time, 
+                       'createdOn' => $createdOn, 
                        'image' => $image,
                        'payment_status' => 'unpaid',
                        'operator' => $operator                       

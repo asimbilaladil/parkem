@@ -39,7 +39,10 @@
                         <a href="<?php echo site_url('Blacklist') ?>"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Blacklist</a>
                         
                     </li>                                            
-                                     
+                    <li >
+                        <a href="<?php echo site_url('Citation') ?>"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Citation</a>
+                        
+                    </li>                                      
                    
                    
 
