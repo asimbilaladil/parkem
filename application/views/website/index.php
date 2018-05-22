@@ -12,8 +12,9 @@
 		<div id="content_area">
 			<div id="content_header"></div>
 			<div id="content_tabs">
-				<a href="/select-lot/mode=map" class="selected">Map</a>
+				<a href="<?php echo site_url(''); ?>" class="selected">Map</a>
 				<a href="<?php echo site_url('Location'); ?>">Location ID</a>
+				<a href="<?php echo site_url('Payment'); ?>">Pay Citation</a>
 			</div>
 			<div id="content_messages">
 			</div>
