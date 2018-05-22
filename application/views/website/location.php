@@ -7,6 +7,87 @@
         .select2-selection { height: auto !important;}
 
     </style>
+
+<style type="text/css">
+    
+#header_area {
+    height: 60px;
+    background-color: #272c33;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .08);
+    border-bottom: 1px solid #DDD
+}
+
+#header_area .logo {
+    margin: 4px 0 0 10px
+}
+
+#nav_area {
+    height: 60px;
+    line-height: 60px;
+    text-align: right;
+    float: right;
+    padding-right: 20px
+}
+
+#nav_area i {
+    color: #FFF;
+    vertical-align: middle;
+    font-size: 1.7em
+}
+
+#nav_area a,
+#settings_menu a {
+    color: #FFF;
+    text-decoration: none;
+    padding: 2px 10px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: .8em
+}
+
+#content_tabs {
+    background-color: #272c33;
+    padding: 10px .5em 0 .5em;
+    border-bottom: 1px solid #272c33
+}
+
+#content_tabs a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0 1em 6px 1em;
+    border-bottom: 4px solid transparent;
+    color: #FFF
+}
+
+#content_tabs a.selected {
+    border-bottom-color: #e8f1fc
+}
+
+</style>
+
+
+<div id="header_area">
+            <div class="wrapper">
+                <div id="nav_area">
+                    <!-- <span><a href="/" class="home_link">Home</a></span> -->
+                  
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+<div id="content_area">
+            <div id="content_header"></div>
+            <div id="content_tabs">
+                <a href="<?php echo site_url(''); ?>">Map</a>
+                <a href="<?php echo site_url('Location'); ?>"  class="selected">Location ID</a>
+                <a href="<?php echo site_url('Payment'); ?>" >Pay Citation</a>
+            </div>
+            <div id="content_messages">
+            </div>
+            <div id="content">    
 <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
@@ -40,6 +121,8 @@
             </div>
         </div>
     </div>
+</div>
+</div>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
 <script type="text/javascript">
