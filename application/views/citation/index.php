@@ -49,7 +49,7 @@
                                                  <a href="#"><?php echo $item->numberPlate; ?>
                                                  <span>
                                                     <img src="<?php echo $item->carImage; ?>" 
-                                                     alt="image" height="200" /></span></a>
+                                                     alt="image" height="200" style="max-width: 400%;" /></span></a>
                                             </div>
 
                                         </td>

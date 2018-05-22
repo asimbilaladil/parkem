@@ -200,7 +200,15 @@ class AdminModel extends CI_Model {
         return $query->result();        
        
     } 
+    public function findCitation($id){
+        
+        $query = $this->db->query("SELECT c.id, c.timestamp as timestamp, o.fullname as operatorName, np.number_plate as numberPlate, c.image as carImage, l.name as lotName, c.payment_status as paymentStatus FROM `citation` as c left join operator as o on c.operator = o.id LEFT join number_plates as np on np.id = c.number_plate LEFT join lot as l on l.id = c.lot where np.is_delete = 0 and c.is_delete = 0 and o.is_delete = 0 and l.is_delete = 0 and c.id = $id");
 
+        $query->result();
+
+        return $query->result();        
+       
+    } 
 
 
 }
