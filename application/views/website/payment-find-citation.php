@@ -21,7 +21,7 @@
     <div class="form-group">
         <label>Citation No</label>
         <input disabled type="text" class="form-control" value="C-<?php echo $value->id; ?>" >
-        <input  type="hidden" class="form-control" id="citationNO" name="citationNO" value="<?php echo $value->id; ?>">
+        <input  type="hidden" class="form-control" id="citation_no" name="citationNO" value="<?php echo $value->id; ?>">
     </div>
     <div class="form-group">
         <label>Number Plate</label>
@@ -45,12 +45,16 @@
     </div>     
     <div class="col-sm-3" ></div>  
     <?php if($value->paymentStatus == 'unpaid'){ ?> 
-    	<img onclick="submitPayment()" class="col-sm-6" style="cursor: pointer; height: 45px; " src="<?php echo base_url("includes/website/assets/img/"); ?>PayPal-PayNow-Button.png">   
+    	<a onclick="payCitation()"><img class="col-sm-6" style="cursor: pointer; height: 45px; " src="<?php echo base_url("includes/website/assets/img/"); ?>PayPal-PayNow-Button.png"></a>   
 	<?php } else { ?>
-
+		<img  class="col-sm-6" style="cursor: pointer; height: 45px; " src="<?php echo base_url("includes/website/assets/img/"); ?>paid.png">  
 	<?php }  ?>
-		<img  class="col-sm-6" style="cursor: pointer; height: 45px; " src="<?php echo base_url("includes/website/assets/img/"); ?>paid.png">   
+		
+
    	<?php } ?>
     
                     
 </div>
+
+
+

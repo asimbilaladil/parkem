@@ -143,6 +143,16 @@
             $('.firstForm').show();
         }
         var submitPayment = function submitPayment(){
-            console.log("HERE")
+            $('#submitForm').click();
+        }
+        var payCitation = function payCitation(){
+            var citationNO = $('#citation_no').val();
+            
+            if( citationNO != '' ){
+                window.location = "<?php echo site_url('Payment/process') ?>?citationNO="+citationNO;
+
+               
+            }
+
         }
     </script>
