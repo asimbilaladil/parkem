@@ -51,9 +51,9 @@ class Payment  extends CI_Controller {
 
         // PayPal settings
         $paypal_email = 'asimbilal0292-facilitator@gmail.com';
-        $return_url = 'http://127.0.0.1/parkem/Payment/thankyou';
-        $cancel_url = 'http://127.0.0.1/parkem/Payment/cancel';
-        $notify_url = 'http://127.0.0.1/parkem/Payment/verify';
+        $return_url = site_url('Payment/thankyou'); 
+        $cancel_url = site_url('Payment/cancel'); 
+        $notify_url = site_url('Payment/verify'); 
 
         $item_name = 'Citation Payment';
 
