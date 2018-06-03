@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label>Lot</label>
                             <input disabled value="<?php echo $data['data'][0]->name; ?>" type="text" class="form-control"  name="name">
-                            <input  value="<?php echo $data['data'][0]->id; ?>" type="hidden" class="form-control"  name="id">
+                            <input id="lot"  value="<?php echo $data['data'][0]->id; ?>" type="hidden" class="form-control"  name="id">
                         </div>
                         <div class="form-group">
                             <label>Number Plate</label>
@@ -134,22 +134,23 @@
     } 
     var registerNumberPlate = function registerNumberPlate(){
         var lot_id = $('#id').val();
-        var number_plate = $('#id').val();
+        var number_plate = $('#number_plate').val();
         var unit_name = $('#unit_name').val(); 
 
             $.ajax({
                 url: "<?php echo site_url('Register/saveNumberPlate') ?>",
                 type: "POST",
                 data: {
-                    'lot_id': lot_id,
+                    'id': lot_id,
                     'number_plate':number_plate,
                     'unit_name' : unit_name
 
                 },
                 success: function(response) {
                     $('#id').val('');
-                    $('#id').val('');
+                    $('#number_plate').val('');
                     $('#unit_name').val(''); 
+                    alert("Your number plate register successfully")
                                
                 },
                 error: function() {
