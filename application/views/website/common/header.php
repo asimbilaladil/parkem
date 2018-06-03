@@ -14,5 +14,6 @@
 	<link rel="manifest" href="<?php echo base_url('includes/website/assets/manifest.json') ?>">
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.28&amp;key=AIzaSyCux8E5j2vMYKpkJ33BAWTVIuRuLvFCEKU"></script>
 <script type="text/javascript" src="<?php echo base_url('includes/website/assets/js/markerclusterer_compiled.js') ?>"></script>	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="">

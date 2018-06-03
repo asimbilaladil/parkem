@@ -1,10 +1,22 @@
 	<div id="flex_wrapper">
 		<div id="header_area">
 			<div class="wrapper">
+				<table>
+							<tr>
+								<td style=" width: 35%; ">
+									
+								</td>
+								<td style="width: 50%; border: 0px solid black;" >
+									<a href="/select-lot/"><img style="width:  36%;" src="<?php echo base_url('includes/website/assets/img/ParkemLong.png'); ?>" alt="Logo" class="logo"></a>
+								</td>
+								<td>
+									
+								</td>
+							</tr>
+						</table>
 				<div id="nav_area">
-					<!-- <span><a href="/" class="home_link">Home</a></span> -->
-					<i class="fa fa-cog fa-2x" id="settings_menu_toggle"></i>
-				</div>
+						</div>
+						
 				
 				<div class="clearfix"></div>
 			</div>
@@ -15,6 +27,9 @@
 				<a href="<?php echo site_url(''); ?>" class="selected">Map</a>
 				<a href="<?php echo site_url('Location'); ?>">Location ID</a>
 				<a href="<?php echo site_url('Payment'); ?>">Pay Citation</a>
+				<a style="font-size: 20px; float: right;" href="<?php echo site_url('Admin'); ?>" <i class="fa fa-user fa-2x" id="settings_menu_toggle"></i> Admin </a>
+
+				
 			</div>
 			<div id="content_messages">
 			</div>

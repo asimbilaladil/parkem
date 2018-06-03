@@ -37,7 +37,7 @@
 
                 ?>
                 <div class="login-form">
-                    <form id="unitForm" action="<?php echo site_url('Register/saveNumberPlate') ?>" method="post">
+                    <form   id="unitForm" action="<?php echo site_url('Register/saveNumberPlate') ?>" method="post">
                         <div class="form-group">
                             <label>Lot</label>
                             <input disabled value="<?php echo $data['data'][0]->name; ?>" type="text" class="form-control"  name="name">
@@ -53,10 +53,10 @@
                                 
                                 <div class="form-group">
                                     <label>Number Plate</label>
-                                    <input required type="text" class="form-control" placeholder="Number Plate" name="number_plate">
+                                    <input required type="text" class="form-control" placeholder="Number Plate" id="number_plate" name="number_plate">
                                 </div>
                                 
-                                <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Register</button>
+                                <button type="button" onclick="registerNumberPlate()" class="btn btn-success btn-flat m-b-30 m-t-30">Register</button>
                             </div>
                         </div>  
                        <?php } ?>
@@ -84,7 +84,8 @@
             },
             success: function(response) {
                 if(response){
-                    $( "#unitForm" ).submit();
+                    //$( "#unitForm" ).submit();
+                    registerNumberPlate();
                 } else {
                     $('#unit_pin').addClass("is-invalid")
                 }
@@ -130,5 +131,31 @@
             loadForm();
        }
          
-    }  
+    } 
+    var registerNumberPlate = function registerNumberPlate(){
+        var lot_id = $('#id').val();
+        var number_plate = $('#id').val();
+        var unit_name = $('#unit_name').val(); 
+
+            $.ajax({
+                url: "<?php echo site_url('Register/saveNumberPlate') ?>",
+                type: "POST",
+                data: {
+                    'lot_id': lot_id,
+                    'number_plate':number_plate,
+                    'unit_name' : unit_name
+
+                },
+                success: function(response) {
+                    $('#id').val('');
+                    $('#id').val('');
+                    $('#unit_name').val(''); 
+                               
+                },
+                error: function() {
+                }
+            });
+      
+         
+    }      
 </script>

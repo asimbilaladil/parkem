@@ -3,6 +3,9 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
         .select2-selection { height: auto !important;}
 
@@ -11,14 +14,14 @@
 <style type="text/css">
     
 #header_area {
-    height: 60px;
+    height: 100px;
     background-color: #272c33;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .08);
     border-bottom: 1px solid #DDD
 }
 
 #header_area .logo {
-    margin: 4px 0 0 10px
+    margin: 8px 0 0 10px
 }
 
 #nav_area {
@@ -69,9 +72,22 @@
 
 <div id="header_area">
             <div class="wrapper">
+                <table>
+                            <tr>
+                                <td style=" width: 35%; ">
+                                    
+                                </td>
+                                <td style="text-align: center; width: 50%; border: 0px solid black;" >
+                                    <a href="/select-lot/"><img style="width:  42%;" src="<?php echo base_url('includes/website/assets/img/ParkemLong.png'); ?>" alt="Logo" class="logo"></a>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        </table>
                 <div id="nav_area">
                     <!-- <span><a href="/" class="home_link">Home</a></span> -->
-                  
+                
                 </div>
                 
                 <div class="clearfix"></div>
@@ -84,31 +100,35 @@
                 <a href="<?php echo site_url(''); ?>">Map</a>
                 <a href="<?php echo site_url('Location'); ?>"  class="selected">Location ID</a>
                 <a href="<?php echo site_url('Payment'); ?>" >Pay Citation</a>
+                <a style="font-size: 20px; float: right;" href="<?php echo site_url('Admin'); ?>" <i class="fa fa-user fa-2x" id="settings_menu_toggle"></i> Admin </a>
             </div>
             <div id="content_messages">
             </div>
             <div id="content">    
-<div class="sufee-login d-flex align-content-center flex-wrap">
+<div class="col-sm-12">
         <div class="container">
             <div class="login-content">
                 <div class="login-logo">
                     <h1>Number Plate Register</h1>
                 </div>
                 
-                <div class="login-form">
+                <div class="login-form col-sm-12">
                     <form id="unitForm" action="<?php echo site_url('Register/saveNumberPlate') ?>" method="post">
-                        <div class="form-group">
-                            <label>Lot</label>
-                            <select onchange="loadForm()" class="responsiveSelect2 form-control" id="id" name="id"  data-live-search="true">
-                                <option selected >Search Lot </option>
-                                <?php foreach ($data['data'] as  $value) {
-                                    # code...
-                                ?>
-                                <option   value="<?php echo $value->id; ?>" ><?php echo $value->name; ?></option>
 
-                                <?php } ?>
-                            </select>
-                        </div>
+                            <div class="form-group ">
+                                <label>Lot</label>
+                                <select onchange="loadForm()"  class=" responsiveSelect2 form-control" id="id" name="id"  data-live-search="true">
+                                    <option selected >Search Lot </option>
+                                    <?php foreach ($data['data'] as  $value) {
+                                        # code...
+                                    ?>
+                                    <option   value="<?php echo $value->id; ?>" ><?php echo $value->name; ?></option>
+
+                                    <?php } ?>
+                                </select>
+                            </div>
+
+                      
 
                         <div class="registerForm">
                             
