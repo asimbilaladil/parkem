@@ -150,7 +150,7 @@
                     $('#id').val('');
                     $('#number_plate').val('');
                     $('#unit_name').val(''); 
-                    alert("Your number plate register successfully")
+                    alert("Your number plate register successfully");
                                
                 },
                 error: function() {

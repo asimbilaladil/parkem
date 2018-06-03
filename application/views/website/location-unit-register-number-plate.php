@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group">
                             <label>Number Plate</label>
-                            <input required type="text" class="form-control" placeholder="Number Plate" name="number_plate">
+                            <input required type="text" id="number_plate" class="form-control" placeholder="Number Plate" name="number_plate">
                         </div>
                         
                         <button onclick="verifyPin()" type="button" class="btn btn-success btn-flat m-b-30 m-t-30">Register</button>

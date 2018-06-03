@@ -200,7 +200,8 @@
             },
             success: function(response) {
                 if(response){
-                    $( "#unitForm" ).submit();
+                    //$( "#unitForm" ).submit();
+                    registerNumberPlate();
                 } else {
                     $('#unit_pin').addClass("is-invalid")
                 }
@@ -209,6 +210,34 @@
             }
         });        
     }
+  var registerNumberPlate = function registerNumberPlate(){
+        var lot_id = $('#id').val();
+        var number_plate = $('#number_plate').val();
+        var unit_name = $('#unit_name').val(); 
 
+            $.ajax({
+                url: "<?php echo site_url('Register/saveNumberPlate') ?>",
+                type: "POST",
+                data: {
+                    'id': lot_id,
+                    'number_plate':number_plate,
+                    'unit_name' : unit_name
+
+                },
+                success: function(response) {
+                    $('#id').val('');
+                    $('#number_plate').val('');
+                    $('#unit_name').val(''); 
+                    $('#unit_pin').val(''); 
+                    
+                    alert("Your number plate register successfully");
+                               
+                },
+                error: function() {
+                }
+            });
+      
+         
+    } 
 </script>
 
