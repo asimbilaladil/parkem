@@ -64,19 +64,11 @@
 
 <div id="header_area">
             <div class="wrapper">
-                   <table>
-                            <tr>
-                                <td style=" width: 35%; ">
-                                    
-                                </td>
-                                <td style="text-align: center; width: 50%; border: 0px solid black;" >
-                                    <a href="/select-lot/"><img style="width:  42%;" src="<?php echo base_url('includes/website/assets/img/ParkemLong.png'); ?>" alt="Logo" class="logo"></a>
-                                </td>
-                                <td>
-                                    
-                                </td>
-                            </tr>
-                        </table>
+                                   <div class="col-sm-4"></div>
+                <div class="col-sm-4" style="text-align:  center;">
+                    <img style="width:  50%;" src="<?php echo base_url('includes/website/assets/img/ParkemLong.png'); ?>" alt="Logo" class="logo">
+                </div>
+                <div class="col-sm-4"></div>
                 <div id="nav_area">
                     <!-- <span><a href="/" class="home_link">Home</a></span> -->
                   
@@ -92,7 +84,7 @@
                 <a href="<?php echo site_url(''); ?>">Map</a>
                 <a href="<?php echo site_url('Location'); ?>">Location ID</a>
                 <a href="<?php echo site_url('Payment'); ?>"  class="selected">Pay Citation</a>
-                <a style="font-size: 20px; float: right;" href="<?php echo site_url('Admin'); ?>" <i class="fa fa-user fa-2x" id="settings_menu_toggle"></i> Admin </a>
+                <a style="font-size: 15px; float: right;" href="<?php echo site_url('Admin'); ?>" <i class="fa fa-user fa-2x" id="settings_menu_toggle"></i> Admin </a>
             </div>
             <div id="content_messages">
             </div>

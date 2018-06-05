@@ -1,33 +1,29 @@
+	
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<div id="flex_wrapper">
 		<div id="header_area">
 			<div class="wrapper">
-				<table>
-							<tr>
-								<td style=" width: 35%; ">
-									
-								</td>
-								<td style="width: 50%; border: 0px solid black;" >
-									<a href="/select-lot/"><img style="width:  36%;" src="<?php echo base_url('includes/website/assets/img/ParkemLong.png'); ?>" alt="Logo" class="logo"></a>
-								</td>
-								<td>
-									
-								</td>
-							</tr>
-						</table>
-				<div id="nav_area">
-						</div>
-						
+
+		                <div class="col-sm-4"></div>
+                <div class="col-sm-4" style="text-align:  center;">
+                    <img style="margin-bottom: 10px; width:  50%;" src="<?php echo base_url('includes/website/assets/img/ParkemLong.png'); ?>" alt="Logo" class="logo">
+                </div>
+                <div class="col-sm-4"></div>
+				
+				
 				
 				<div class="clearfix"></div>
-			</div>
+
 		</div>
 		<div id="content_area">
 			<div id="content_header"></div>
-			<div id="content_tabs">
+			<div id="content_tabs" style="border-top: 1px solid white;">
 				<a href="<?php echo site_url(''); ?>" class="selected">Map</a>
 				<a href="<?php echo site_url('Location'); ?>">Location ID</a>
 				<a href="<?php echo site_url('Payment'); ?>">Pay Citation</a>
-				<a style="font-size: 20px; float: right;" href="<?php echo site_url('Admin'); ?>" <i class="fa fa-user fa-2x" id="settings_menu_toggle"></i> Admin </a>
+				<a style="font-size: 15px; float: right;" href="<?php echo site_url('Admin'); ?>" <i class="fa fa-user fa-2x" id="settings_menu_toggle"></i> Admin </a>
 
 				
 			</div>
