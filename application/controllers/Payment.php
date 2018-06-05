@@ -86,7 +86,7 @@ class Payment  extends CI_Controller {
                 // Append querystring with custom field
                 $querystring .= "&custom=".$citationNO;
 
-                header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
+                header('location:https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
                 exit();
             } 
   
