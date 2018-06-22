@@ -149,10 +149,11 @@ class Api extends REST_Controller  {
                     $result = array(
                        'lat' => $lotData[0]->lat,
                        'lng' => $lotData[0]->lng,
+                       'address' => $lotData[0]->address,
                        'lot_name' => $lotData[0]->name,
                        'citation' => $citation_id,
                        'lot_id' => $lot, 
-                       'number_plate' =>  $numberPlate_id, 
+                       'number_plate' =>  $number_plate, 
                        'timestamp' => $current_time, 
                        'createdOn' => $createdOn, 
                        'image' => $image,
