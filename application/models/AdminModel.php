@@ -216,7 +216,7 @@ class AdminModel extends CI_Model {
         $this->db->where( 'id', intval($id) );
         $this->db->where( 'txn_id', $txn_id );
         $quary_result=$this->db->get();
-        $result = $quary_result->result();
+        $result = $quary_result->num_rows();
         return $result; 
     }
 

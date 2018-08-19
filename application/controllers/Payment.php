@@ -96,7 +96,7 @@ class Payment  extends CI_Controller {
     }
     function verify(){
           
-     error_log("I AM INSIDE verify");
+
         // Response from Paypal
 
         // read the post from PayPal system and add 'cmd'
@@ -156,7 +156,7 @@ class Payment  extends CI_Controller {
                 } else if (strcmp ($res, "INVALID") == 0) {
 
                     $data = array(
-                        'payment_status' => "U"
+                        'payment_status' => "unpaid"
                     );
                     $id = substr($_POST['item_number'],2);
                     $data['citation'] = $this->AdminModel->update('citation', $id, $data);
