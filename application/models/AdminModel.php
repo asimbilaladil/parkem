@@ -220,5 +220,22 @@ class AdminModel extends CI_Model {
         return $result; 
     }
 
+    public function verifyCitationBeforeCreate($lot_id, $numberPlate_id){
+
+        $this->db->select('*');
+        $this->db->from( 'citation' );
+        $this->db->where( 'lot', intval($lot_id) );
+        $this->db->where( 'number_plate', intval($numberPlate_id) );
+        $this->db->order_by('id',"desc");
+        $this->db->limit(1);
+        
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result; 
+    }    
+
+
+
+
 
 }

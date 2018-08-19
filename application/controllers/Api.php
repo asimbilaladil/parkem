@@ -129,53 +129,121 @@ class Api extends REST_Controller  {
                 $numberPlate_id = $numberPlate_data[0]->id;
             }
 
-            $citation_data = array(
-               'lot' => $lot, 
-               'number_plate' =>  $numberPlate_id, 
-               'createdOn' => $createdOn, 
-               'timestamp' => $current_time, 
-               'image' => $image,
-               'payment_status' => 'unpaid',
-               'operator' => $operator
-            );
-            $citation_id = $this->AdminModel->insert('citation', $citation_data);   
+            $citation_status = $this->AdminModel->verifyCitationBeforeCreate($lot, $numberPlate_id);
 
 
-            if($citation_id > 0){
 
-                $lotData = $this->AdminModel->getfromTableById('lot', $lot);
-                if(count($lotData) > 0) {
 
-                    $result = array(
-                       'lat' => $lotData[0]->lat,
-                       'lng' => $lotData[0]->lng,
-                       'address' => $lotData[0]->address,
-                       'lot_name' => $lotData[0]->name,
-                       'citation' => $citation_id,
-                       'lot_id' => $lot, 
-                       'number_plate' =>  $number_plate, 
-                       'timestamp' => $current_time, 
+            if( count($citation_status) > 0 ){
+                $current_timeStamp =  strtotime(date("d-m-Y h:i:s"));
+                //echo "<br>";
+                $update_timeStamp = $citation_status[0]->timestamp + 900;
+
+                if( $current_timeStamp  >  $update_timeStamp ){
+                    $citation_data = array(
+                       'lot' => $lot, 
+                       'number_plate' =>  $numberPlate_id, 
                        'createdOn' => $createdOn, 
+                       'timestamp' => $current_time, 
                        'image' => $image,
                        'payment_status' => 'unpaid',
-                       'operator' => $operator                       
+                       'operator' => $operator
                     );
-                    $data['data'][0] = $result;
-                    $data['status'] = "success"; 
-                    $data['message']  = "Data available";
-                } else {
-                    $data['data'] = [];
-                    $data['status'] = "success"; 
-                    $data['message']  = "Lot not found";
-                }
-        
+                    $citation_id = $this->AdminModel->insert('citation', $citation_data);   
 
+
+                    if($citation_id > 0){
+
+                        $lotData = $this->AdminModel->getfromTableById('lot', $lot);
+                        if(count($lotData) > 0) {
+
+                            $result = array(
+                               'lat' => $lotData[0]->lat,
+                               'lng' => $lotData[0]->lng,
+                               'address' => $lotData[0]->address,
+                               'lot_name' => $lotData[0]->name,
+                               'citation' => $citation_id,
+                               'lot_id' => $lot, 
+                               'number_plate' =>  $number_plate, 
+                               'timestamp' => $current_time, 
+                               'createdOn' => $createdOn, 
+                               'image' => $image,
+                               'payment_status' => 'unpaid',
+                               'operator' => $operator                       
+                            );
+                            $data['data'][0] = $result;
+                            $data['status'] = "success"; 
+                            $data['message']  = "Data available";
+                        } else {
+                            $data['data'] = [];
+                            $data['status'] = "success"; 
+                            $data['message']  = "Lot not found";
+                        }
+                
+
+                    } else{
+                        $data['data'] = [];
+                        $data['status'] = "fail"; 
+                        $data['message']  = "Error while creating citation";
+
+                    }    
+                } else{
+                    $data['data'] = [];
+                    $data['status'] = "fail"; 
+                    $data['message']  = "Printer Connection Issue";
+                }
+            
             } else{
-                $data['data'] = [];
-                $data['status'] = "fail"; 
-                $data['message']  = "Error while creating citation";
+                    $citation_data = array(
+                       'lot' => $lot, 
+                       'number_plate' =>  $numberPlate_id, 
+                       'createdOn' => $createdOn, 
+                       'timestamp' => $current_time, 
+                       'image' => $image,
+                       'payment_status' => 'unpaid',
+                       'operator' => $operator
+                    );
+                    $citation_id = $this->AdminModel->insert('citation', $citation_data);   
+
+
+                    if($citation_id > 0){
+
+                        $lotData = $this->AdminModel->getfromTableById('lot', $lot);
+                        if(count($lotData) > 0) {
+
+                            $result = array(
+                               'lat' => $lotData[0]->lat,
+                               'lng' => $lotData[0]->lng,
+                               'address' => $lotData[0]->address,
+                               'lot_name' => $lotData[0]->name,
+                               'citation' => $citation_id,
+                               'lot_id' => $lot, 
+                               'number_plate' =>  $number_plate, 
+                               'timestamp' => $current_time, 
+                               'createdOn' => $createdOn, 
+                               'image' => $image,
+                               'payment_status' => 'unpaid',
+                               'operator' => $operator                       
+                            );
+                            $data['data'][0] = $result;
+                            $data['status'] = "success"; 
+                            $data['message']  = "Data available";
+                        } else {
+                            $data['data'] = [];
+                            $data['status'] = "success"; 
+                            $data['message']  = "Lot not found";
+                        }
+                
+
+                    } else{
+                        $data['data'] = [];
+                        $data['status'] = "fail"; 
+                        $data['message']  = "Error while creating citation";
+
+                    }  
 
             }
+
             $this->response($data);
         }
     }    
