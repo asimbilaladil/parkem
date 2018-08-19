@@ -145,7 +145,8 @@ class Payment  extends CI_Controller {
                     $id = substr($_POST['item_number'],2);   
                     $verifyPaypalTxnID = $this->AdminModel->verifyPaypalTxnID($id, $_POST['txn_id']);
                     error_log(print_r($verifyPaypalTxnID , true));
-                    if(count($verifyPaypalTxnID) == 0){
+                    error_log("txn id above");
+                    if($verifyPaypalTxnID == 0){
                         error_log("PAYPAL TXN ID NOT EXISTS");
                         $data['citation'] = $this->AdminModel->update('citation', $id, $data);
                     }
