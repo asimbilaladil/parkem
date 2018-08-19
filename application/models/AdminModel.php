@@ -209,6 +209,16 @@ class AdminModel extends CI_Model {
         return $query->result();        
        
     } 
+    public function verifyPaypalTxnID($id, $txn_id){
+
+        $this->db->select('*');
+        $this->db->from( 'citation' );
+        $this->db->where( 'id', intval($id) );
+        $this->db->where( 'txn_id', $txn_id );
+        $quary_result=$this->db->get();
+        $result = $quary_result->result();
+        return $result; 
+    }
 
 
 }

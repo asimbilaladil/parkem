@@ -84,10 +84,9 @@ class Payment  extends CI_Controller {
                 $querystring .= "notify_url=".urlencode($notify_url);
 
                 // Append querystring with custom field
-//  echo              $querystring .= "&custom=".$citationNO;
-	header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
 
-               // header('location:https://ipnpb.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
+            	header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
+
                 exit();
             } 
   
@@ -107,7 +106,7 @@ class Payment  extends CI_Controller {
             $value = preg_replace('/(.*[^%^0^D])(%0A)(.*)/i','${1}%0D%0A${3}',$value);// IPN fix
             $req .= "&$key=$value";
         }
-//error_log(print_r(substr($_POST['item_number'],2),true));
+
         // assign posted variables to local variables
         $data['item_name']          = $_POST['item_name'];
         $data['item_number']        = $_POST['item_number'];
@@ -121,43 +120,41 @@ class Payment  extends CI_Controller {
 
         // post back to PayPal system to validate
         $header = "POST /cgi-bin/webscr HTTP/1.1\r\n";
-	$header .= "Host: www.sandbox.paypal.com\r\n";
+	    $header .= "Host: www.sandbox.paypal.com\r\n";
 
         $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
         $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
 
         $fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
-//error_log("before if");
-//error_log(print_r($fp,true));
+
         if (!$fp) {
             // HTTP ERROR
-//error_log("INSIDE if i m  ");
+
         } else {
-//error_log("INSIDE ELSE I M ");
+
             fputs($fp, $header . $req);
             while (!feof($fp)) {
                 $res = fgets ($fp, 1024);
-//error_log("----------------------------------------");
-//error_log(print_r($res,true));
 
-//error_log(strpos($res,"VERIFIED`"),true);
-//error_log("----------------------------------------");              
-//  if (strcmp($res, "VERIFIED") == 0) {
- if (strcmp (trim($res), "VERIFIED") == 0){
-error_log($_POST["payment_status"]);
-                   
-error_log("final Status Verified");
-error_log(print_r($_POST,true));
-$data = array(
-                        'payment_status' => "P"
+                if (strcmp (trim($res), "VERIFIED") == 0){
+
+                    $data = array(
+                        'payment_status' => "P",
+                        'txn_id' => $_POST['txn_id']
                     );
-                   // $id = $data['custom'];
- $id = substr($_POST['item_number'],2);                 
-$data['citation'] = $this->AdminModel->update('citation', $id, $data);
-//error_log("Citation Id here".$id);
+                    $id = substr($_POST['item_number'],2);   
+                    $verifyPaypalTxnID = $this->AdminModel->verifyPaypalTxnID($id, $_POST['txn_id']);
+                    error_log(print_r($verifyPaypalTxnID , true));
+                    if(count($verifyPaypalTxnID) == 0){
+                        error_log("PAYPAL TXN ID NOT EXISTS");
+                        $data['citation'] = $this->AdminModel->update('citation', $id, $data);
+                    }
+                                  
+                    
+
 
                 } else if (strcmp ($res, "INVALID") == 0) {
-error_log("Status Invalid");
+
                     $data = array(
                         'payment_status' => "U"
                     );
