@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://34.205.32.200/parkem/';
+$config['base_url'] = 'https://www.parkem.ca/parkem/';
 
 /*
 |--------------------------------------------------------------------------
@@ -401,7 +401,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 
 */
 $config['cookie_prefix']	= '';
-$config['cookie_domain']	= '34.205.32.200';
+$config['cookie_domain']	= 'www.parkem.ca';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
